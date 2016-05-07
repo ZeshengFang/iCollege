@@ -26,71 +26,13 @@ class LoginOrRegisterViewController: UIViewController {
 
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     @IBAction func dismissKeyboard(sender: AnyObject) {
         self.acountTextField.resignFirstResponder()
         self.passwordTextField.resignFirstResponder()
     }
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
     @IBAction func login(sender: UIButton) {

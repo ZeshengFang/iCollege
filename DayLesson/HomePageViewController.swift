@@ -12,6 +12,7 @@ import WebKit
 @IBDesignable
 class HomePageViewController: UIViewController {
 
+    //******
     @IBInspectable var startColor: UIColor = UIColor.whiteColor()
     @IBInspectable var midClor: UIColor = UIColor.whiteColor()
     @IBInspectable var endColor: UIColor = UIColor.whiteColor()
@@ -37,6 +38,7 @@ class HomePageViewController: UIViewController {
              tableView?.reloadData()
         }
     }
+    
     var LearnCloudIntroductions = [Introduction]()
     var defaultIntroductions = [Introduction]()
     var decreaseCollectionsIntroductions = [Introduction]()
@@ -45,9 +47,11 @@ class HomePageViewController: UIViewController {
     
     var callRefreshTimes = 0
     
+    //******
     lazy var tableViewRefreshController: UIRefreshControl = {
         let refreshContrller = UIRefreshControl()
         refreshContrller.attributedTitle =  NSAttributedString(string: "加载中")
+        //****
         refreshContrller.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
         return refreshContrller
     }()
@@ -90,29 +94,29 @@ class HomePageViewController: UIViewController {
         
         
     }
-    override func viewWillAppear(animated: Bool) {
-        navigationBarAppearanceSetUp()
-
-    }
-    private func navigationBarAppearanceSetUp() {
-        guard let navigationVC = navigationController else {
-            return
-        }
-        let navigationGradientLayer = CAGradientLayer()
-        let fram = CGRectMake(0.0, 0.0, navigationVC.navigationBar.bounds.width, navigationVC.navigationBar.bounds.height + UIApplication.sharedApplication().statusBarFrame.height)
-        navigationGradientLayer.frame = fram
-        navigationGradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-        navigationGradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
-        navigationGradientLayer.colors = [startColor.CGColor, midClor.CGColor, endColor.CGColor]
-        
-        
-        UIGraphicsBeginImageContext(navigationGradientLayer.bounds.size)
-        navigationGradientLayer.renderInContext(UIGraphicsGetCurrentContext()!)
-        let gradientBackGround = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        navigationController?.navigationBar.setBackgroundImage(gradientBackGround, forBarMetrics: .Default)
-    }
+//    override func viewWillAppear(animated: Bool) {
+//        navigationBarAppearanceSetUp()
+//
+//    }
+//    private func navigationBarAppearanceSetUp() {
+//        guard let navigationVC = navigationController else {
+//            return
+//        }
+//        let navigationGradientLayer = CAGradientLayer()
+//        let fram = CGRectMake(0.0, 0.0, navigationVC.navigationBar.bounds.width, navigationVC.navigationBar.bounds.height + UIApplication.sharedApplication().statusBarFrame.height)
+//        navigationGradientLayer.frame = fram
+//        navigationGradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+//        navigationGradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+//        navigationGradientLayer.colors = [startColor.CGColor, midClor.CGColor, endColor.CGColor]
+//        
+//        
+//        UIGraphicsBeginImageContext(navigationGradientLayer.bounds.size)
+//        navigationGradientLayer.renderInContext(UIGraphicsGetCurrentContext()!)
+//        let gradientBackGround = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+//        
+//        navigationController?.navigationBar.setBackgroundImage(gradientBackGround, forBarMetrics: .Default)
+//    }
     
     private func setUp() {
         if let currentButton = self.view.viewWithTag(currentButtonTag) as? HomePageLIstButton {
@@ -150,7 +154,7 @@ class HomePageViewController: UIViewController {
                         self.increaseCollectionsIntroductions = self.LearnCloudIntroductions.sort{ return $0.collectioons < $1.collectioons }
                         //判断当前的展示方式为哪种，以对展示数组赋以相对应的数组
                         if let button = self.view.viewWithTag(self.currentButtonTag) as? HomePageLIstButton {
-                            self.resetInroductionList(button)
+                            self.setInroductionList(button)
                         } else {
                             print("ButtonTag error")
                         }
@@ -181,10 +185,10 @@ class HomePageViewController: UIViewController {
         }
         
         
-        resetInroductionList(button)
+        setInroductionList(button)
     }
     
-    private func resetInroductionList(button: HomePageLIstButton) {
+    private func setInroductionList(button: HomePageLIstButton) {
         switch button.tag {
         case buttonTag.defaultButton:
             introductionLists = defaultIntroductions
@@ -208,7 +212,7 @@ class HomePageViewController: UIViewController {
 
 
 
-
+//****
 extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK: - tableViewDataSourse
     

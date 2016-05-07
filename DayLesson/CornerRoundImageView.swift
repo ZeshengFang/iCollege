@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+@IBDesignable
 class CornerRoundImageView: UIImageView {
     @IBInspectable var borderColor: UIColor = UIColor.whiteColor()
     override func awakeFromNib() {

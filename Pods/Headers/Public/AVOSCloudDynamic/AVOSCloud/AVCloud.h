@@ -1,1 +1,1 @@
-../../../../AVOSCloudDynamic/iOS/release-v3.1.5.2/AVOSCloud/Dynamic/AVOSCloud.framework/Headers/AVCloud.h
+../../../../AVOSCloudDynamic/iOS/release-v3.2.7/Dynamic/AVOSCloud.framework/Headers/AVCloud.h

@@ -35,6 +35,9 @@ class Introduction {
     static var temp: Int = 1
     init(sender: AnyObject) {
         if let courseName = sender["name"] as? String, let author = sender["author"] as? String, let collections = sender["collections"] as? Int {
+            if Introduction.temp == 4 {
+                Introduction.temp = 1
+            }
             configuration(UIImage(named: "shili\(Introduction.temp++)")!, courseName: courseName , author: author, collections: collections)
         }
     }
