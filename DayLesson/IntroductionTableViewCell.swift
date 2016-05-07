@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cosmos
 
 class IntroductionTableViewCell: UITableViewCell {
 
@@ -14,12 +15,23 @@ class IntroductionTableViewCell: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var courseNameLabel: UILabel!
 
+    @IBOutlet weak var starRating: CosmosView!
     
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var ratingAndComment: UIStackView!
     func configurationCell(introduction: Introduction) {
         briefimageView.image = introduction.briefImage
         courseNameLabel.text = introduction.courseName
         authorLabel.text = introduction.author
-        
+        commentLabel.text = "（\(introduction.commentCount)条评论)"
+        starRating.rating = introduction.rating
+        ratingAndComment.hidden = false
+        if introduction.rating > 0 {
+            ratingLabel.text = String(stringInterpolationSegment: introduction.rating)
+        } else {
+            ratingAndComment.hidden = true
+        }
     }
 
 

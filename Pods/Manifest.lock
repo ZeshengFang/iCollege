@@ -1,12 +1,15 @@
 PODS:
   - AVOSCloudDynamic (3.2.7)
+  - Cosmos (1.2.2)
 
 DEPENDENCIES:
   - AVOSCloudDynamic
+  - Cosmos (~> 1.2)
 
 SPEC CHECKSUMS:
   AVOSCloudDynamic: 1a64ed78c897be98d54d75fd4c8cff0a21e9eeb6
+  Cosmos: 87c49100c69d2cb2eebfa4eb8d1e801fe29ff774
 
-PODFILE CHECKSUM: cb40db5456231ceae1071af0ea57f305b4bc3095
+PODFILE CHECKSUM: 17a03b77c52385936eecf7139af93a357b58a8a5
 
 COCOAPODS: 1.0.0.beta.3

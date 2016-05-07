@@ -85,7 +85,9 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${PODS_ROOT}/AVOSCloudDynamic/iOS/release-v3.2.7/Dynamic/AVOSCloud.framework"
+  install_framework "Pods-DayLesson/Cosmos.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${PODS_ROOT}/AVOSCloudDynamic/iOS/release-v3.2.7/Dynamic/AVOSCloud.framework"
+  install_framework "Pods-DayLesson/Cosmos.framework"
 fi
