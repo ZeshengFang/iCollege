@@ -21,10 +21,11 @@ class LoginOrRegisterViewController: UIViewController {
 //        testUser.username = "Test"
 //        testUser.password = "Test"
 //        testUser.signUp(error)
+       
+        
         
     }
 
-    
     
     @IBAction func dismissKeyboard(sender: AnyObject) {
         self.acountTextField.resignFirstResponder()
@@ -53,7 +54,8 @@ class LoginOrRegisterViewController: UIViewController {
                 
             } else {
                 print("sucess")
-                self.dismissViewControllerAnimated(false, completion: nil)
+                self.performSegueWithIdentifier(Storyboard.segue_loginToHome, sender: nil)
+                
             }
            }
 

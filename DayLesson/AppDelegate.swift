@@ -8,6 +8,7 @@
 
 import UIKit
 import AVOSCloud
+let story = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,13 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     var introductions = [Introduction]()
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         AVOSCloud.setApplicationId("ODlb4v6CMGChWJFLv1AcRxiz-gzGzoHsz", clientKey: "KLYzANhKqfaBWEU2xp8MKhHl")
        // changeNavigationBarAppearance()
         chageStatusBarStyle()
-   
+        
+        
+        
+        if AVUser.currentUser() != nil {
+            
+            if let viweController =  story.instantiateViewControllerWithIdentifier(Storyboard.viewControllerStoryBoardID_tabbar) as? TabBarViewController {
+                window?.rootViewController = viweController
+            }
+        }
         
         
         return true

@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import AVOSCloud
 
 class UserViewController: UIViewController {
 
+    @IBOutlet weak var loginOrLogOutButton: UIButton!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
@@ -20,8 +22,50 @@ class UserViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        if AVUser.currentUser() != nil {
+            loginOrLogOutButton.setTitle("退出登录", forState: .Normal)
+        } else {
+            loginOrLogOutButton.setTitle("登录", forState: .Normal)
+        }
     }
 
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Storyboard.segue_userToSearch {
+            if let destination = segue.destinationViewController as? SearchViewController {
+                if let collectionCouserID = sender as? [Int] {
+                    let introductions =  LearnCloudIntroductions.filter({ (introduction) -> Bool in
+                        if collectionCouserID.contains(introduction.ID) {
+                            return true
+                        }
+                        return false
+                    })
+                    print(introductions)
+                    destination.introductions = introductions
+                    destination.which = 1
+                }
+            }
+        }
+    }
+    
+    
+    @IBAction func loginOrlogOut() {
+        
+        if AVUser.currentUser() != nil {
+            AVUser.logOut()
+            loginOrLogOutButton.setTitle("登录", forState: .Normal)
+        } else {
+            loginOrLogOutButton.setTitle("退出登录", forState: .Normal)
+            self.performSegueWithIdentifier(Storyboard.segue_login, sender: nil)
+        }
+       
+        
+    }
+    
+    
+    
+    
 
 }
 
@@ -48,6 +92,20 @@ extension UserViewController: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let user = AVUser.currentUser() {
+            switch indexPath.row {
+            case 0:
+                if let collectionCourseID = user["collectionCourse"] as? [Int] {
+                    self.performSegueWithIdentifier(Storyboard.segue_userToSearch, sender: collectionCourseID)
+                }
+                
+            case 1: break
+            case 2: break
+            case 3: break
+            default: break
+            }
+        }
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     

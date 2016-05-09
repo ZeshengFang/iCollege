@@ -39,7 +39,7 @@ class HomePageViewController: UIViewController {
         }
     }
     
-    var LearnCloudIntroductions = [Introduction]()
+    //var LearnCloudIntroductions = [Introduction]()
     var defaultIntroductions = [Introduction]()
     var decreaseCollectionsIntroductions = [Introduction]()
     var increaseCollectionsIntroductions = [Introduction]()
@@ -135,23 +135,23 @@ class HomePageViewController: UIViewController {
         //执行完成后执行闭包中的代码
         query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             //首先清空当前存储网络通信返回的数据的数组
-            self.LearnCloudIntroductions.removeAll()
+            LearnCloudIntroductions.removeAll()
             //if let 语句对判断是否有返回的数据，并且对返回的数据进行解包操作
             if let objects = objects {
                 //利用for in 语句将返回的数据转化为Introduction类，转化过程由Introduction类处理
                 for object in objects {
                     let introduction = Introduction(sender: object)
-                    self.LearnCloudIntroductions.append(introduction)
+                    LearnCloudIntroductions.append(introduction)
                 }
                 //如果没有出错的话
                 if error == nil {
                     //判断返回该数据的操作次数是否与当前刷新操作的次数相同且tableViewRefreshController还在刷新或者是不是第一次打开该controller的自动刷新
                      if (self.tableViewRefreshController.refreshing && currentTime == self.callRefreshTimes) || currentTime == 1 {
                         //将以进行赋值操作的LearnCloudIntroductions数组赋值给table view的数据源数组defaultIntroductions，实现来源数据的分离
-                        self.defaultIntroductions = self.LearnCloudIntroductions
+                        self.defaultIntroductions = LearnCloudIntroductions
                         //并且对table view的数据源数组defaultIntroductions使其按照某种方法进行排序
-                        self.decreaseCollectionsIntroductions = self.LearnCloudIntroductions.sort{ return $0.collectioons > $1.collectioons }
-                        self.increaseCollectionsIntroductions = self.LearnCloudIntroductions.sort{ return $0.collectioons < $1.collectioons }
+                        self.decreaseCollectionsIntroductions = LearnCloudIntroductions.sort{ return $0.collectioons > $1.collectioons }
+                        self.increaseCollectionsIntroductions = LearnCloudIntroductions.sort{ return $0.collectioons < $1.collectioons }
                         //判断当前的展示方式为哪种，以对展示数组赋以相对应的数组
                         if let button = self.view.viewWithTag(self.currentButtonTag) as? HomePageLIstButton {
                             self.setInroductionList(button)
@@ -199,7 +199,13 @@ class HomePageViewController: UIViewController {
     }
     
 
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "HomeToSearch" {
+            if let destination = segue.destinationViewController as? SearchViewController {
+                destination.introductions = self.introductionLists
+            }
+        }
+    }
     
     
     
@@ -220,11 +226,8 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         return introductionLists.count
     }
     
-    private struct Storyboard {
-        static let cellIdentifier = "IntroductionCell"
-    }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellIdentifier) as? IntroductionTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.introductionCellIdentifier) as? IntroductionTableViewCell
         cell!.configurationCell(introductionLists[indexPath.row])
         return cell!
     }
