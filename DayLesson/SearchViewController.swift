@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum departurePlace {
+    case MyCollection
+    case RecentBrowse
+}
 class SearchViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
 
@@ -21,7 +25,11 @@ class SearchViewController: UIViewController {
     
     
     var introductions: [Introduction]!
-    var which: Int!
+    
+    //根据枚举中设定的值判断出发的控制器，用以改变该控制器的标题
+    var whichDeparturePlace: departurePlace!
+ 
+    
     var searchResults: [Introduction] = []
     var searchController: UISearchController! {
         didSet {
@@ -38,11 +46,10 @@ class SearchViewController: UIViewController {
         searchController = UISearchController(searchResultsController: nil)
         tableView.tableHeaderView = searchController.searchBar
         searchResults = introductions
-        if which != nil {
-            switch which {
-            case 1: titleLabel.text = "我的收藏"
-            case 2: titleLabel.text = "最近浏览"
-            default: break
+        if whichDeparturePlace != nil {
+            switch whichDeparturePlace! {
+            case .MyCollection: titleLabel.text = "我的收藏"
+            case .RecentBrowse: titleLabel.text = "最近浏览"
             }
         }
 

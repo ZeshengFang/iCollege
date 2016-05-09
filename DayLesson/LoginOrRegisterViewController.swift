@@ -8,8 +8,9 @@
 
 import UIKit
 import AVOSCloud
+import BubbleTransition
 
-class LoginOrRegisterViewController: UIViewController {
+class LoginOrRegisterViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
     @IBOutlet weak var acountTextField: LoginTextField!
     @IBOutlet weak var passwordTextField: LoginTextField!
@@ -23,8 +24,31 @@ class LoginOrRegisterViewController: UIViewController {
 //        testUser.signUp(error)
        
         
-        
     }
+    let transition = BubbleTransition()
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let controller = segue.destinationViewController
+        controller.transitioningDelegate = self
+        controller.modalPresentationStyle = .Custom
+    }
+    
+    // MARK: UIViewControllerTransitioningDelegate
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .Present
+        transition.startingPoint = loginButton.center
+        transition.bubbleColor = loginButton.backgroundColor!
+        return transition
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .Dismiss
+        transition.startingPoint = loginButton.center
+        transition.bubbleColor = loginButton.backgroundColor!
+        return transition
+    }
+    
 
     
     @IBAction func dismissKeyboard(sender: AnyObject) {
@@ -47,7 +71,8 @@ class LoginOrRegisterViewController: UIViewController {
     }
     
     private func loginWhitAVUser(acountText: String, passwordText: String) {
-        
+
+
         AVUser.logInWithUsernameInBackground(acountText, password: passwordText){ (user, error) -> Void in
             if let error = error {
                 print(error.debugDescription)

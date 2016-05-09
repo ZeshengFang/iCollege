@@ -29,6 +29,7 @@ class UserViewController: UIViewController {
         }
     }
 
+    var currentDeparturePlace: departurePlace!
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -43,7 +44,7 @@ class UserViewController: UIViewController {
                     })
                     print(introductions)
                     destination.introductions = introductions
-                    destination.which = 1
+                    destination.whichDeparturePlace = currentDeparturePlace
                 }
             }
         }
@@ -63,6 +64,13 @@ class UserViewController: UIViewController {
         
     }
     
+    //点击编辑按钮触发该事件，判读是否存在当前用户，若存在则跳转
+    @IBAction func editPersonalInformation() {
+        
+        if AVUser.currentUser() != nil {
+            self.performSegueWithIdentifier(Storyboard.segue_userToEdit, sender: nil)
+        }
+    }
     
     
     
@@ -95,17 +103,21 @@ extension UserViewController: UITableViewDataSource, UITableViewDelegate {
         if let user = AVUser.currentUser() {
             switch indexPath.row {
             case 0:
-                if let collectionCourseID = user["collectionCourse"] as? [Int] {
-                    self.performSegueWithIdentifier(Storyboard.segue_userToSearch, sender: collectionCourseID)
+                if let courseIDs = user["collectionCourse"] as? [Int] {
+                    currentDeparturePlace = departurePlace.MyCollection
+                    self.performSegueWithIdentifier(Storyboard.segue_userToSearch, sender: courseIDs)
                 }
                 
-            case 1: break
+            case 1:
+                if let courseIDs = user["recentBrowse"] as? [Int] {
+                    currentDeparturePlace = departurePlace.RecentBrowse
+                    self.performSegueWithIdentifier(Storyboard.segue_userToSearch, sender: courseIDs)
+                }
             case 2: break
             case 3: break
             default: break
             }
         }
-        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     

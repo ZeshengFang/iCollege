@@ -17,6 +17,7 @@ struct Storyboard {
     static let segue_loginToHome = "loginToHome"
     static let segue_userToSearch = "userToSearch"
     static let segue_login = "loginSegue"
+    static let segue_userToEdit = "userToEdit"
     
     static let viewControllerStoryBoardID_tabbar = "tabbarViewController"
 }

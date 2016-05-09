@@ -4,10 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>BubbleTransition.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>Cosmos.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
+		</dict>
+		<key>DGElasticPullToRefresh.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>NVActivityIndicatorView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>Pods-DayLesson.xcscheme</key>
 		<dict>
@@ -19,7 +34,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>115824B7CB2E76E5ACB836A251E79404</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2AA8179E817221DAAC1E771BD701F878</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>608B49B5DDACC601EE8044A1931993F9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>626D49AD18621B0A3059EE726B27AE89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7372CA79CE92E7AC032175441663EBE4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -29,7 +64,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A42D1F9A0F4D40FD3159420032EB60AF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B896B4D36D9FE7EB89DA95822275AFEA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5A218D792E21CDA12118728AE1BD298</key>
 		<dict>
 			<key>primary</key>
 			<true/>

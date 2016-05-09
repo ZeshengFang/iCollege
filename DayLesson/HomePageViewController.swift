@@ -8,6 +8,9 @@
 
 import UIKit
 import AVOSCloud
+import NVActivityIndicatorView
+import DGElasticPullToRefresh
+
 import WebKit
 @IBDesignable
 class HomePageViewController: UIViewController {
@@ -22,16 +25,19 @@ class HomePageViewController: UIViewController {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
-            tableView.addSubview(tableViewRefreshController)
+            //tableView.addSubview(tableViewRefreshController)
             tableView.tableFooterView = UIView(frame: CGRectZero)
         }
     }
-   
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView! {
+    
+    
+    @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView! {
         didSet {
-            activityIndicatorView.startAnimating()
+            activityIndicatorView.type = .BallSpinFadeLoader
+            activityIndicatorView.startAnimation()
         }
     }
+   
     
     var introductionLists = [Introduction]() {
         didSet {
@@ -75,6 +81,8 @@ class HomePageViewController: UIViewController {
         }
     }
     
+    
+    
 
     
     
@@ -91,7 +99,19 @@ class HomePageViewController: UIViewController {
         
         setUp()
         refresh()
-        
+
+//        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+//        //loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
+////        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+////            // Add your logic here
+////            // Do not forget to call dg_stopLoading() at the end
+////            self?.tableView.dg_stopLoading()
+////            }, loadingView: loadingView)
+//        tableView.dg_addPullToRefreshWithActionHandler({ () -> Void in
+//                print("active")
+//            }, loadingView: loadingView)
+//        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
+//        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
     }
 //    override func viewWillAppear(animated: Bool) {
@@ -160,11 +180,11 @@ class HomePageViewController: UIViewController {
                         }
                         //所有操作完成后停止刷新
                         self.tableViewRefreshController.endRefreshing()
-                        self.activityIndicatorView.stopAnimating()
+                        self.activityIndicatorView.stopAnimation()
                     }
                 } else {
                     // to do
-                    self.activityIndicatorView.stopAnimating()
+                    self.activityIndicatorView.stopAnimation()
                 }
                 
                 
