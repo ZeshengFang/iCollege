@@ -49,11 +49,18 @@ class HomePageViewController: UIViewController {
     //并且对table view的数据源数组defaultIntroductions使其按照某种方法进行排序
     var decreaseCollectionsIntroductions = [Introduction]()
     var increaseCollectionsIntroductions = [Introduction]()
+    var decreaseCommentCountIntroductions = [Introduction]()
+    var increaseCommentCountIntroductions = [Introduction]()
+    var decreaseRatingIntroductions = [Introduction]()
+    var increaseRatingIntroductions = [Introduction]()
     var defaultIntroductions = [Introduction]() {
         didSet {
-            decreaseCollectionsIntroductions = defaultIntroductions.sort{ return $0.collectioons > $1.collectioons }
-            increaseCollectionsIntroductions = defaultIntroductions.sort{ return $0.collectioons < $1.collectioons }
-            
+            decreaseCollectionsIntroductions = defaultIntroductions.sort{ return $0.collections >= $1.collections }
+            increaseCollectionsIntroductions = defaultIntroductions.sort{ return $0.collections <= $1.collections }
+            decreaseCommentCountIntroductions = defaultIntroductions.sort{return $0.commentCount >= $1.commentCount}
+            increaseCommentCountIntroductions = defaultIntroductions.sort{return $0.commentCount <= $1.commentCount}
+            decreaseRatingIntroductions = defaultIntroductions.sort{return $0.rating >= $1.rating}
+            increaseRatingIntroductions = defaultIntroductions.sort{return $0.rating <= $1.rating}
         }
     }
 
@@ -83,6 +90,8 @@ class HomePageViewController: UIViewController {
     private struct buttonTag {
         static let defaultButton = 1
         static let collectionButton = 2
+        static let commentCountButton = 3
+        static let ratingButton = 4
     
     }
     private var currentButtonTag = buttonTag.defaultButton {
@@ -262,6 +271,10 @@ class HomePageViewController: UIViewController {
             introductionLists = defaultIntroductions
         case buttonTag.collectionButton:
             introductionLists = button.increase ? increaseCollectionsIntroductions : decreaseCollectionsIntroductions
+        case buttonTag.commentCountButton:
+            introductionLists = button.increase ? increaseCommentCountIntroductions : decreaseCommentCountIntroductions
+        case buttonTag.ratingButton:
+            introductionLists = button.increase ? increaseRatingIntroductions : decreaseRatingIntroductions
         default: break
         }
     }

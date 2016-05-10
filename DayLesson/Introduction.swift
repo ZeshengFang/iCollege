@@ -24,7 +24,7 @@ class Introduction {
     var author: String {
         return _author
     }
-    var collectioons: Int {
+    var collections: Int {
         return _collections
     }
     var rating: Double {

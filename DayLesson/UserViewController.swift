@@ -52,9 +52,10 @@ class UserViewController: UIViewController {
     
     
     @IBAction func loginOrlogOut() {
-        
+
         if AVUser.currentUser() != nil {
             AVUser.logOut()
+            SweetAlert().showAlert("成功退出!", subTitle: "You clicked the button!", style: AlertStyle.Success)
             loginOrLogOutButton.setTitle("登录", forState: .Normal)
         } else {
             loginOrLogOutButton.setTitle("退出登录", forState: .Normal)
