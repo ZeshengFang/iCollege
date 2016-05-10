@@ -5,6 +5,7 @@ PODS:
   - DOFavoriteButton (0.0.4)
   - LiquidFloatingActionButton (0.1.2)
   - MaterialKit (0.4)
+  - NextGrowingTextView (0.6.2)
   - NVActivityIndicatorView (2.5)
 
 DEPENDENCIES:
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - DOFavoriteButton
   - LiquidFloatingActionButton
   - MaterialKit (~> 0.4)
+  - NextGrowingTextView
   - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
@@ -23,8 +25,9 @@ SPEC CHECKSUMS:
   DOFavoriteButton: 866e15af173d2dd5233971a1f657a5f31d2491d5
   LiquidFloatingActionButton: 12ed6f642365142f85c73eaebef8c40b6590511e
   MaterialKit: 2e5267bcf410b82793f2b92d2111f8ae4ed2c3f2
+  NextGrowingTextView: 731ef3abf385a6d968bcddc92e836b2d7c73db42
   NVActivityIndicatorView: 18e82784c9cb2d5f3df3129a3e4754eb075ebca0
 
-PODFILE CHECKSUM: 7e05b5f933ebf8299c5534e767b641d7766182a3
+PODFILE CHECKSUM: 4735958d07d14e0d62f55e1bf9eab85553fac33a
 
 COCOAPODS: 1.0.0.beta.3

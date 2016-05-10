@@ -13,4 +13,5 @@ pod 'DOFavoriteButton'
 
 pod 'MaterialKit', '~> 0.4'
 pod "LiquidFloatingActionButton"
+pod 'NextGrowingTextView'
 end

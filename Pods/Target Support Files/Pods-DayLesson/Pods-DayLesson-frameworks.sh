@@ -91,6 +91,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-DayLesson/LiquidFloatingActionButton.framework"
   install_framework "Pods-DayLesson/MaterialKit.framework"
   install_framework "Pods-DayLesson/NVActivityIndicatorView.framework"
+  install_framework "Pods-DayLesson/NextGrowingTextView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${PODS_ROOT}/AVOSCloudDynamic/iOS/release-v3.2.9/Dynamic/AVOSCloud.framework"
@@ -100,4 +101,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-DayLesson/LiquidFloatingActionButton.framework"
   install_framework "Pods-DayLesson/MaterialKit.framework"
   install_framework "Pods-DayLesson/NVActivityIndicatorView.framework"
+  install_framework "Pods-DayLesson/NextGrowingTextView.framework"
 fi

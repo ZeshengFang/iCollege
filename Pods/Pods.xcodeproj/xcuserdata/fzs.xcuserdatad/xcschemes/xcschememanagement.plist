@@ -44,6 +44,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>NextGrowingTextView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 		<key>Pods-DayLesson.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -94,6 +99,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6365D1196FB71360F1D9604997F2CED7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7372CA79CE92E7AC032175441663EBE4</key>
 		<dict>
 			<key>primary</key>
@@ -130,6 +140,11 @@
 			<true/>
 		</dict>
 		<key>F5A218D792E21CDA12118728AE1BD298</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA96E056526D7384722CEDE9D960D7B8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
