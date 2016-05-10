@@ -24,6 +24,16 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
+		<key>LiquidFloatingActionButton-LiquidFloatingActionButton.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>LiquidFloatingActionButton.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>MaterialKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -55,6 +65,16 @@
 			<true/>
 		</dict>
 		<key>2AA8179E817221DAAC1E771BD701F878</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2E4A37C88D68A62EA5C1BC7A2A4D19AE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>358CDF6D26A663BBB7B6A3165A51DA64</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -100,6 +120,11 @@
 			<true/>
 		</dict>
 		<key>B896B4D36D9FE7EB89DA95822275AFEA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ECB4143196184B0E0EA02182DB2B9CCA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Storyboard {
     static let introductionCellIdentifier = "IntroductionCell"
@@ -21,7 +22,10 @@ struct Storyboard {
     static let segue_login = "loginSegue"
     static let segue_userToEdit = "userToEdit"
     static let segue_homeToCourseDetail = "homeToCourseDetail"
+    static let segue_courseDetailToComment = "courseDetailToComment"
     
     static let viewControllerStoryBoardID_tabbar = "tabbarViewController"
+    static let viewControllerStoryBoardID_comment = "CommentViewController"
 }
+
 
