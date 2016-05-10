@@ -9,5 +9,7 @@ pod 'NVActivityIndicatorView'
 
 pod 'BubbleTransition', '~> 1.0.0'
 
+pod 'DOFavoriteButton'
 
+pod 'MaterialKit', '~> 0.4'
 end

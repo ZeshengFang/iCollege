@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import DOFavoriteButton
 
 class IssueViewController: UIViewController {
 
+    @IBOutlet weak var postButton: DOFavoriteButton!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self

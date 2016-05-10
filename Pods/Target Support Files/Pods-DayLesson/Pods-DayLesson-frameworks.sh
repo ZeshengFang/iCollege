@@ -84,14 +84,18 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${PODS_ROOT}/AVOSCloudDynamic/iOS/release-v3.2.7/Dynamic/AVOSCloud.framework"
+  install_framework "${PODS_ROOT}/AVOSCloudDynamic/iOS/release-v3.2.9/Dynamic/AVOSCloud.framework"
   install_framework "Pods-DayLesson/BubbleTransition.framework"
   install_framework "Pods-DayLesson/Cosmos.framework"
+  install_framework "Pods-DayLesson/DOFavoriteButton.framework"
+  install_framework "Pods-DayLesson/MaterialKit.framework"
   install_framework "Pods-DayLesson/NVActivityIndicatorView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${PODS_ROOT}/AVOSCloudDynamic/iOS/release-v3.2.7/Dynamic/AVOSCloud.framework"
+  install_framework "${PODS_ROOT}/AVOSCloudDynamic/iOS/release-v3.2.9/Dynamic/AVOSCloud.framework"
   install_framework "Pods-DayLesson/BubbleTransition.framework"
   install_framework "Pods-DayLesson/Cosmos.framework"
+  install_framework "Pods-DayLesson/DOFavoriteButton.framework"
+  install_framework "Pods-DayLesson/MaterialKit.framework"
   install_framework "Pods-DayLesson/NVActivityIndicatorView.framework"
 fi

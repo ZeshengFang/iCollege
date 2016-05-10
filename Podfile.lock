@@ -1,21 +1,27 @@
 PODS:
-  - AVOSCloudDynamic (3.2.7)
+  - AVOSCloudDynamic (3.2.9)
   - BubbleTransition (1.0.3)
   - Cosmos (1.2.2)
+  - DOFavoriteButton (0.0.4)
+  - MaterialKit (0.4)
   - NVActivityIndicatorView (2.5)
 
 DEPENDENCIES:
   - AVOSCloudDynamic
   - BubbleTransition (~> 1.0.0)
   - Cosmos (~> 1.2)
+  - DOFavoriteButton
+  - MaterialKit (~> 0.4)
   - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
-  AVOSCloudDynamic: 1a64ed78c897be98d54d75fd4c8cff0a21e9eeb6
+  AVOSCloudDynamic: 623fcd1541475841da553eb37cf9bab129f5bc5d
   BubbleTransition: a7ae6678721406d60f604cbbea1ace505563119d
   Cosmos: 87c49100c69d2cb2eebfa4eb8d1e801fe29ff774
+  DOFavoriteButton: 866e15af173d2dd5233971a1f657a5f31d2491d5
+  MaterialKit: 2e5267bcf410b82793f2b92d2111f8ae4ed2c3f2
   NVActivityIndicatorView: 18e82784c9cb2d5f3df3129a3e4754eb075ebca0
 
-PODFILE CHECKSUM: 8edd9dc43b9265cea7fad471b7e89f78650090be
+PODFILE CHECKSUM: e4fc68ed04554d05477273b10d4e96e87116f744
 
 COCOAPODS: 1.0.0.beta.3

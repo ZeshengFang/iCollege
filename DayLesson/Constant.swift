@@ -22,4 +22,3 @@ struct Storyboard {
     static let viewControllerStoryBoardID_tabbar = "tabbarViewController"
 }
 
-var LearnCloudIntroductions = [Introduction]()

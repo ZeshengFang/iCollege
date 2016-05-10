@@ -19,6 +19,16 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>DOFavoriteButton.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>MaterialKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>NVActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -39,7 +49,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>130E6C272F37FE6886AB810496648B28</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2AA8179E817221DAAC1E771BD701F878</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>566AB76A58B0A9940CEE5812DFF9A2C0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -55,6 +75,16 @@
 			<true/>
 		</dict>
 		<key>7372CA79CE92E7AC032175441663EBE4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>73850773DC05DB0F801C716B2A9E95F5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>805D4E75C1BB0ABF8B1DF1FECAAB4B65</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -10,8 +10,9 @@ import UIKit
 import AVOSCloud
 import NVActivityIndicatorView
 import DGElasticPullToRefresh
-
+import MaterialKit
 import WebKit
+var LearnCloudIntroductions = [Introduction]()
 @IBDesignable
 class HomePageViewController: UIViewController {
 
@@ -45,22 +46,35 @@ class HomePageViewController: UIViewController {
         }
     }
     
-    //var LearnCloudIntroductions = [Introduction]()
-    var defaultIntroductions = [Introduction]()
+    //并且对table view的数据源数组defaultIntroductions使其按照某种方法进行排序
     var decreaseCollectionsIntroductions = [Introduction]()
     var increaseCollectionsIntroductions = [Introduction]()
-    
+    var defaultIntroductions = [Introduction]() {
+        didSet {
+            decreaseCollectionsIntroductions = defaultIntroductions.sort{ return $0.collectioons > $1.collectioons }
+            increaseCollectionsIntroductions = defaultIntroductions.sort{ return $0.collectioons < $1.collectioons }
+            
+        }
+    }
+
     
     var callRefreshTimes = 0
     
+    let refreshControl = MKRefreshControl()
     //******
-    lazy var tableViewRefreshController: UIRefreshControl = {
-        let refreshContrller = UIRefreshControl()
-        refreshContrller.attributedTitle =  NSAttributedString(string: "加载中")
-        //****
-        refreshContrller.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
-        return refreshContrller
-    }()
+//    lazy var tableViewRefreshController: UIRefreshControl = {
+//        let refreshContrller = UIRefreshControl()
+//        refreshContrller.attributedTitle =  NSAttributedString(string: "加载中")
+//        //****
+//        refreshContrller.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
+//        return refreshContrller
+//    }()
+    
+    
+
+    
+    let learnCloud = LearnCloud()
+    
     
     private struct LeanCloud {
         static let className = "Test"
@@ -96,22 +110,56 @@ class HomePageViewController: UIViewController {
 //        inss["collections"] = 11
 //        
 //        inss.saveInBackground()
+        let block:AVArrayResultBlock = {[unowned self] (objects, error) -> Void in
+            //let currentTime = ++self.callRefreshTimes
+            //首先清空当前存储网络通信返回的数据的数组
+            LearnCloudIntroductions.removeAll()
+            //if let 语句对判断是否有返回的数据，并且对返回的数据进行解包操作
+            if let objects = objects {
+                //利用for in 语句将返回的数据转化为Introduction类，转化过程由Introduction类处理
+                for object in objects {
+                    let introduction = Introduction(sender: object)
+                    LearnCloudIntroductions.append(introduction)
+                }
+                //如果没有出错的话
+                if error == nil {
+                    //判断返回该数据的操作次数是否与当前刷新操作的次数相同且tableViewRefreshController还在刷新或者是不是第一次打开该controller的自动刷新
+                    //if (self.tableViewRefreshController.refreshing && currentTime == self.callRefreshTimes) || currentTime == 1 {
+                        //将以进行赋值操作的LearnCloudIntroductions数组赋值给table view的数据源数组defaultIntroductions，实现来源数据的分离
+                        self.defaultIntroductions = LearnCloudIntroductions
+                        //判断当前的展示方式为哪种，以对展示数组赋以相对应的数组
+                        if let button = self.view.viewWithTag(self.currentButtonTag) as? HomePageLIstButton {
+                            self.setInroductionList(button)
+                        } else {
+                            print("ButtonTag error")
+                        }
+                        //所有操作完成后停止刷新
+                        //self.tableViewRefreshController.endRefreshing()
+                        self.activityIndicatorView.stopAnimation()
+                    if self.refreshControl.refreshing {
+                         self.refreshControl.endRefreshing()
+                    }
+                    
+                    //}
+                } else {
+                    // to do
+                    self.activityIndicatorView.stopAnimation()
+                }
+                
+                
+            }
+        }
+
         
         setUp()
-        refresh()
+        learnCloud.refresh(LeanCloud.className, block: block)
 
-//        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-//        //loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
-////        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-////            // Add your logic here
-////            // Do not forget to call dg_stopLoading() at the end
-////            self?.tableView.dg_stopLoading()
-////            }, loadingView: loadingView)
-//        tableView.dg_addPullToRefreshWithActionHandler({ () -> Void in
-//                print("active")
-//            }, loadingView: loadingView)
-//        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
-//        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        
+        refreshControl.addToScrollView(self.tableView, withRefreshBlock: { [unowned self]() -> Void in
+            self.learnCloud.refresh(LeanCloud.className, block: block)
+            
+        })
+//        refreshControl.beginRefreshing()
         
     }
 //    override func viewWillAppear(animated: Bool) {
@@ -145,53 +193,53 @@ class HomePageViewController: UIViewController {
         
 
     }
-    func refresh() {
-        
-        //delete it When do not need
-        //当前刷新属于第几次刷新
-        let currentTime = ++callRefreshTimes
-        //创建从leancloud获取数据的队列
-        let query = AVQuery(className: LeanCloud.className)
-        //执行完成后执行闭包中的代码
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
-            //首先清空当前存储网络通信返回的数据的数组
-            LearnCloudIntroductions.removeAll()
-            //if let 语句对判断是否有返回的数据，并且对返回的数据进行解包操作
-            if let objects = objects {
-                //利用for in 语句将返回的数据转化为Introduction类，转化过程由Introduction类处理
-                for object in objects {
-                    let introduction = Introduction(sender: object)
-                    LearnCloudIntroductions.append(introduction)
-                }
-                //如果没有出错的话
-                if error == nil {
-                    //判断返回该数据的操作次数是否与当前刷新操作的次数相同且tableViewRefreshController还在刷新或者是不是第一次打开该controller的自动刷新
-                     if (self.tableViewRefreshController.refreshing && currentTime == self.callRefreshTimes) || currentTime == 1 {
-                        //将以进行赋值操作的LearnCloudIntroductions数组赋值给table view的数据源数组defaultIntroductions，实现来源数据的分离
-                        self.defaultIntroductions = LearnCloudIntroductions
-                        //并且对table view的数据源数组defaultIntroductions使其按照某种方法进行排序
-                        self.decreaseCollectionsIntroductions = LearnCloudIntroductions.sort{ return $0.collectioons > $1.collectioons }
-                        self.increaseCollectionsIntroductions = LearnCloudIntroductions.sort{ return $0.collectioons < $1.collectioons }
-                        //判断当前的展示方式为哪种，以对展示数组赋以相对应的数组
-                        if let button = self.view.viewWithTag(self.currentButtonTag) as? HomePageLIstButton {
-                            self.setInroductionList(button)
-                        } else {
-                            print("ButtonTag error")
-                        }
-                        //所有操作完成后停止刷新
-                        self.tableViewRefreshController.endRefreshing()
-                        self.activityIndicatorView.stopAnimation()
-                    }
-                } else {
-                    // to do
-                    self.activityIndicatorView.stopAnimation()
-                }
-                
-                
-            }
-        }
-        
-    }
+//    func refresh(block: AVArrayResultBlock) {
+//        
+//        //delete it When do not need
+//        //当前刷新属于第几次刷新
+//        
+//        //创建从leancloud获取数据的队列
+//        let query = AVQuery(className: LeanCloud.className)
+//        //执行完成后执行闭包中的代码
+//        query.findObjectsInBackgroundWithBlock(block)
+//        //query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+////            //首先清空当前存储网络通信返回的数据的数组
+////            LearnCloud.LearnCloudIntroductions.removeAll()
+////            //if let 语句对判断是否有返回的数据，并且对返回的数据进行解包操作
+////            if let objects = objects {
+////                //利用for in 语句将返回的数据转化为Introduction类，转化过程由Introduction类处理
+////                for object in objects {
+////                    let introduction = Introduction(sender: object)
+////                    LearnCloud.LearnCloudIntroductions.append(introduction)
+////                }
+////                //如果没有出错的话
+////                if error == nil {
+////                    //判断返回该数据的操作次数是否与当前刷新操作的次数相同且tableViewRefreshController还在刷新或者是不是第一次打开该controller的自动刷新
+////                     if (self.tableViewRefreshController.refreshing && currentTime == self.callRefreshTimes) || currentTime == 1 {
+////                        //将以进行赋值操作的LearnCloudIntroductions数组赋值给table view的数据源数组defaultIntroductions，实现来源数据的分离
+////                        HomePageViewController.defaultIntroductions = LearnCloud.LearnCloudIntroductions
+////                        
+////                       
+////                        //判断当前的展示方式为哪种，以对展示数组赋以相对应的数组
+////                        if let button = self.view.viewWithTag(self.currentButtonTag) as? HomePageLIstButton {
+////                            self.setInroductionList(button)
+////                        } else {
+////                            print("ButtonTag error")
+////                        }
+////                        //所有操作完成后停止刷新
+////                        self.tableViewRefreshController.endRefreshing()
+////                        self.activityIndicatorView.stopAnimation()
+////                    }
+////                } else {
+////                    // to do
+////                    self.activityIndicatorView.stopAnimation()
+////                }
+////                
+////                
+////            }
+//        
+//        
+//    }
     
     
     
@@ -200,9 +248,9 @@ class HomePageViewController: UIViewController {
         
         button.changeArrowDirection()
         currentButtonTag = button.tag
-        if tableViewRefreshController.refreshing {
-            tableViewRefreshController.endRefreshing()
-        }
+//        if tableViewRefreshController.refreshing {
+//            tableViewRefreshController.endRefreshing()
+//        }
         
         
         setInroductionList(button)
