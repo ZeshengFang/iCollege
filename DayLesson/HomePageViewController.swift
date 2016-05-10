@@ -314,7 +314,7 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
     }
     // MARK: - tableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("CellToVideoVC", sender: nil)
+        self.performSegueWithIdentifier(Storyboard.segue_homeToCourseDetail, sender: nil)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     

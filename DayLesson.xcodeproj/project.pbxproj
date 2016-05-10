@@ -15,6 +15,8 @@
 		6E7D19FF1C74AFC0005B5466 /* HomePageLIstButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D19FE1C74AFC0005B5466 /* HomePageLIstButton.swift */; };
 		6E7D93B81C9D9D3500105B43 /* LoginBackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D93B71C9D9D3500105B43 /* LoginBackgroundImageView.swift */; };
 		6E7D93BA1C9DA49000105B43 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D93B91C9DA49000105B43 /* LoginTextField.swift */; };
+		6E8DE5BE1CE2586800DF6839 /* CommentTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8DE5BD1CE2586800DF6839 /* CommentTitleCell.swift */; };
+		6E8DE5C01CE25FF400DF6839 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8DE5BF1CE25FF400DF6839 /* CommentCell.swift */; };
 		6E9320921CDF94F600DCC8D8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9320911CDF94F600DCC8D8 /* Constant.swift */; };
 		6E9320941CDFAB9E00DCC8D8 /* issueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9320931CDFAB9E00DCC8D8 /* issueCell.swift */; };
 		6E9320961CDFABE200DCC8D8 /* IssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9320951CDFABE200DCC8D8 /* IssueViewController.swift */; };
@@ -45,6 +47,8 @@
 		6E7D19FE1C74AFC0005B5466 /* HomePageLIstButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageLIstButton.swift; sourceTree = "<group>"; };
 		6E7D93B71C9D9D3500105B43 /* LoginBackgroundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBackgroundImageView.swift; sourceTree = "<group>"; };
 		6E7D93B91C9DA49000105B43 /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		6E8DE5BD1CE2586800DF6839 /* CommentTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTitleCell.swift; sourceTree = "<group>"; };
+		6E8DE5BF1CE25FF400DF6839 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		6E9320911CDF94F600DCC8D8 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		6E9320931CDFAB9E00DCC8D8 /* issueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = issueCell.swift; sourceTree = "<group>"; };
 		6E9320951CDFABE200DCC8D8 /* IssueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				6EBB85881CA1ACE6001A1412 /* CornerRoundImageView.swift */,
 				6E292B541CDDCFFC003C1E8D /* NormalTextField.swift */,
 				6E9320931CDFAB9E00DCC8D8 /* issueCell.swift */,
+				6E8DE5BD1CE2586800DF6839 /* CommentTitleCell.swift */,
+				6E8DE5BF1CE25FF400DF6839 /* CommentCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 				6E9320921CDF94F600DCC8D8 /* Constant.swift in Sources */,
 				6EF988511CE0EBAF00156245 /* CourseDdtailViewController.swift in Sources */,
 				6E7D93B81C9D9D3500105B43 /* LoginBackgroundImageView.swift in Sources */,
+				6E8DE5BE1CE2586800DF6839 /* CommentTitleCell.swift in Sources */,
 				6EBB858B1CA1AF13001A1412 /* UserViewController.swift in Sources */,
 				6EECE2CC1CDF30F300029EB5 /* SearchViewController.swift in Sources */,
 				6EDFC01B1CE1DBDD0040EE53 /* LearnCloud.swift in Sources */,
@@ -328,6 +335,7 @@
 				6E9320941CDFAB9E00DCC8D8 /* issueCell.swift in Sources */,
 				6E7D19FF1C74AFC0005B5466 /* HomePageLIstButton.swift in Sources */,
 				6E5953B61C743F95000B9514 /* IntroductionTableViewCell.swift in Sources */,
+				6E8DE5C01CE25FF400DF6839 /* CommentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
