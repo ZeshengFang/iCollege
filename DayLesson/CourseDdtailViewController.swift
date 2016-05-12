@@ -10,11 +10,15 @@ import UIKit
 import NVActivityIndicatorView
 import LiquidFloatingActionButton
 import SafariServices
+import Cosmos
 
 
 
 class CourseDdtailViewController: UIViewController, LiquidFloatingActionButtonDelegate,LiquidFloatingActionButtonDataSource,SFSafariViewControllerDelegate {
-    
+    @IBOutlet weak var authorImage: CornerRoundImageView!
+    @IBOutlet weak var authorNameLabel: UILabel!
+    @IBOutlet weak var courseRealseDateLabel: UILabel!
+    @IBOutlet weak var courseNameLabel: UILabel!
 
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -25,6 +29,18 @@ class CourseDdtailViewController: UIViewController, LiquidFloatingActionButtonDe
         }
     }
     
+    var introduction: Introduction!{
+        didSet {
+            courseDetail = learnCloud.gerCourseDetailWithID(introduction.descriptionObjectID)
+        }
+    }
+    var courseDetail: CourseDetail! {
+        didSet {
+            courseDetail.imageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+                self.authorImage.image = UIImage(data: data)
+            }
+        }
+    }
     //待修改
     var url: String = "http://www.ted.com/talks/adam_foss_a_prosecutor_s_vision_for_a_better_justice_system"
     
@@ -48,8 +64,6 @@ class CourseDdtailViewController: UIViewController, LiquidFloatingActionButtonDe
         default: break
         }
         
-       
-        print("did Tapped! \(index)")
         liquidFloatingActionButton.close()
     }
     func safariViewControllerDidFinish(controller: SFSafariViewController) {
@@ -75,7 +89,20 @@ class CourseDdtailViewController: UIViewController, LiquidFloatingActionButtonDe
         let floatingFrame = CGRect(x: self.view.frame.width - 56 - 16, y: self.view.frame.height - 56 - 16, width: 40, height: 40)
         let bottomRightButton = createButton(floatingFrame, .Up)
         self.view.addSubview(bottomRightButton)
+        setUp()
     }
+    
+    func setUp() {
+        authorNameLabel.text = introduction.author
+        courseNameLabel.text = introduction.courseName
+        courseRealseDateLabel.text = courseDetail.date
+        
+    }
+    
+    
+    
+    
+    
     @IBAction func back() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -98,11 +125,20 @@ extension CourseDdtailViewController: UITableViewDataSource, UITableViewDelegate
             if let barFont = UIFont(name: "Avenir-Light", size: 10.0) {
                 cell.textLabel?.font = barFont
             }
-            cell.textLabel?.text = "本课程从最基本的概念开始讲起，步步深入，带领大家学习HTML、CSS样式基础知识，了解各种常用标签的意义以及基本用法，后半部分讲解CSS样式代码添加，为后面的案例课程打下基础。"
+                
+            cell.textLabel?.text = courseDetail.courseDescription
+
+            
             cell.textLabel?.numberOfLines = 0
             return cell
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.commetTitleCell) as! CommentTitleCell
+            cell.starRatingView.rating = introduction.rating
+            cell.commentCountLabel.text = "课程评价(\(introduction.commentCount))"
+            if introduction.rating > 0 {
+                cell.ratingLabel.text = "\(introduction.rating)"
+            }
+            
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.commentCell) as! CommentCell
@@ -112,7 +148,6 @@ extension CourseDdtailViewController: UITableViewDataSource, UITableViewDelegate
     }
     // MARK: - tableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //self.performSegueWithIdentifier("CellToVideoVC", sender: nil)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     

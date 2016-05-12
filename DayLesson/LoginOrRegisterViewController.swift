@@ -71,8 +71,6 @@ class LoginOrRegisterViewController: UIViewController, UIViewControllerTransitio
     }
     
     private func loginWhitAVUser(acountText: String, passwordText: String) {
-
-
         AVUser.logInWithUsernameInBackground(acountText, password: passwordText){ (user, error) -> Void in
             if let error = error {
                 print(error.debugDescription)
@@ -82,7 +80,6 @@ class LoginOrRegisterViewController: UIViewController, UIViewControllerTransitio
                 self.performSegueWithIdentifier(Storyboard.segue_loginToHome, sender: nil)
                 
             }
-           }
-
+        }
     }
 }

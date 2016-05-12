@@ -11,6 +11,7 @@ import AVOSCloud
 
 class UserViewController: UIViewController {
 
+    @IBOutlet weak var imageView: CornerRoundImageView!
     @IBOutlet weak var loginOrLogOutButton: UIButton!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -24,9 +25,15 @@ class UserViewController: UIViewController {
         super.viewDidLoad()
         if AVUser.currentUser() != nil {
             loginOrLogOutButton.setTitle("退出登录", forState: .Normal)
+            if let imageFile = AVUser.currentUser()["image"] as? AVFile {
+                imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
+                    self.imageView.image = UIImage(data: data)
+                })
+            }
         } else {
             loginOrLogOutButton.setTitle("登录", forState: .Normal)
         }
+        
     }
 
     var currentDeparturePlace: departurePlace!
@@ -57,6 +64,7 @@ class UserViewController: UIViewController {
             AVUser.logOut()
             SweetAlert().showAlert("成功退出!", subTitle: "You clicked the button!", style: AlertStyle.Success)
             loginOrLogOutButton.setTitle("登录", forState: .Normal)
+            imageView.image = UIImage(named: defaultImage.userImage)
         } else {
             loginOrLogOutButton.setTitle("退出登录", forState: .Normal)
             self.performSegueWithIdentifier(Storyboard.segue_login, sender: nil)

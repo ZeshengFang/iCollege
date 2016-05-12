@@ -19,6 +19,7 @@ struct Storyboard {
     
     static let segue_loginToHome = "loginToHome"
     static let segue_userToSearch = "userToSearch"
+    static let segue_homeToSearch = "HomeToSearch"
     static let segue_login = "loginSegue"
     static let segue_userToEdit = "userToEdit"
     static let segue_homeToCourseDetail = "homeToCourseDetail"
@@ -26,6 +27,15 @@ struct Storyboard {
     
     static let viewControllerStoryBoardID_tabbar = "tabbarViewController"
     static let viewControllerStoryBoardID_comment = "CommentViewController"
+    
+
+    
 }
+struct defaultImage {
+    static let courseIntroductionImage = "shili1"
+    static let userImage = "默认头像"
+}
+
+
 
 

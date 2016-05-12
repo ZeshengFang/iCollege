@@ -9,7 +9,6 @@
 import UIKit
 import AVOSCloud
 import NVActivityIndicatorView
-import DGElasticPullToRefresh
 import MaterialKit
 import WebKit
 var LearnCloudIntroductions = [Introduction]()
@@ -80,7 +79,7 @@ class HomePageViewController: UIViewController {
     
 
     
-    let learnCloud = LearnCloud()
+
     
     
     private struct LeanCloud {
@@ -159,13 +158,12 @@ class HomePageViewController: UIViewController {
             }
         }
 
-        
         setUp()
         learnCloud.refresh(LeanCloud.className, block: block)
 
         
-        refreshControl.addToScrollView(self.tableView, withRefreshBlock: { [unowned self]() -> Void in
-            self.learnCloud.refresh(LeanCloud.className, block: block)
+        refreshControl.addToScrollView(self.tableView, withRefreshBlock: { () -> Void in
+            learnCloud.refresh(LeanCloud.className, block: block)
             
         })
 //        refreshControl.beginRefreshing()
@@ -281,11 +279,19 @@ class HomePageViewController: UIViewController {
     
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "HomeToSearch" {
+
+        if segue.identifier == Storyboard.segue_homeToSearch{
             if let destination = segue.destinationViewController as? SearchViewController {
                 destination.introductions = self.introductionLists
             }
         }
+        
+        if segue.identifier == Storyboard.segue_homeToCourseDetail {
+            if let destination = segue.destinationViewController as? CourseDdtailViewController {
+                destination.introduction = sender as! Introduction
+            }
+        }
+        
     }
     
     
@@ -314,10 +320,15 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
     }
     // MARK: - tableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier(Storyboard.segue_homeToCourseDetail, sender: nil)
+        self.performSegueWithIdentifier(Storyboard.segue_homeToCourseDetail, sender: introductionLists[indexPath.row])
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
-    
 
 }
+
+//extension HomePageViewController: lazyLoad {
+//    func lazyLoadImage() {
+//        self.tableView.reloadData()
+//        print("adad")
+//    }
+//}

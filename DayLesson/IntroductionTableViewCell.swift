@@ -8,6 +8,11 @@
 
 import UIKit
 import Cosmos
+import AVOSCloud
+
+//protocol lazyLoad {
+//    func lazyLoadImage()
+//}
 
 class IntroductionTableViewCell: UITableViewCell {
 
@@ -20,8 +25,22 @@ class IntroductionTableViewCell: UITableViewCell {
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var ratingAndComment: UIStackView!
+    
+//    var delegate: lazyLoad!
     func configurationCell(introduction: Introduction) {
-        briefimageView.image = introduction.briefImage
+        
+        introduction.imageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+            guard error == nil else {
+                return
+            }
+            self.briefimageView.image = UIImage(data: data)!
+            //self.delegate.lazyLoadImage()
+        }
+        
+        
+        if briefimageView.image == nil {
+            briefimageView.image = UIImage(named: defaultImage.courseIntroductionImage)
+        }
         courseNameLabel.text = introduction.courseName
         authorLabel.text = introduction.author
         commentLabel.text = "（\(introduction.commentCount)条评论)"
@@ -39,10 +58,8 @@ class IntroductionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    override func awakeFromNib() {
-//        self.layer.borderColor = UIColor(red: 18.0 / 255.0, green: 18.0 / 255.0, blue: 18.0 / 255.0, alpha: 1.0).CGColor
-//        self.layer.borderWidth = 1.0
-//        self.layer.cornerRadius = 4.0
-    }
+    
+    
+
     
 }
