@@ -880,6 +880,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="confirm:" destination="oH7-1A-w6X" eventType="touchUpInside" id="5ZM-zB-BK8"/>
+                                    <action selector="postUserInfo" destination="oH7-1A-w6X" eventType="touchUpInside" id="aqs-i0-HlF"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gVu-nw-0X8" customClass="CornerRoundImageView" customModule="DayLesson" customModuleProvider="target">

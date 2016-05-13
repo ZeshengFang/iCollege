@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVOSCloud
 
 class EditViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -34,6 +35,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     var isImageSet = false
     
+    let user = AVUser.currentUser()!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +44,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     private func setUp() {
-        if !sexIsMale {
-            switchBcakgroundColor(maleButton, femaleButton: femaleButton)
-        }
+
 //        guard name != nil else {
 //            return
 //        }
@@ -57,8 +57,18 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         } else {
             imageView.image = UIImage(named: imageName)
         }
-        
         isImageSet = true
+        
+        if let sex = user["sex"] as? String {
+            if sex == "male" {
+                sexIsMale = true
+            } else {
+                sexIsMale = false
+            }
+        }
+        if !sexIsMale {
+            switchBcakgroundColor(maleButton, femaleButton: femaleButton)
+        }
         
         
     }
@@ -70,6 +80,23 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
 
+    @IBAction func postUserInfo() {
+//        print(sexIsMale)
+//        print(user)
+//        if sexIsMale {
+//            //print("male")
+//            user["sex"] = "male"
+//        } else {
+//            //print("female")
+//            user["sex"] = "female"
+//        }
+//        print(user)
+        
+        user["name"] = nameTextField.text
+        user.saveInBackground()
+        print(AVUser.currentUser())
+        
+    }
 
     @IBAction func addImage(sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
