@@ -13,6 +13,7 @@ class UserViewController: UIViewController {
 
     @IBOutlet weak var imageView: CornerRoundImageView!
     @IBOutlet weak var loginOrLogOutButton: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
@@ -21,18 +22,42 @@ class UserViewController: UIViewController {
             tableView.scrollEnabled = false
         }
     }
+    var image: UIImage!
+    var userName: String!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if AVUser.currentUser() != nil {
+        if let user = AVUser.currentUser() {
             loginOrLogOutButton.setTitle("退出登录", forState: .Normal)
-            if let imageFile = AVUser.currentUser()["image"] as? AVFile {
+            if let imageFile = user["image"] as? AVFile {
                 imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
                     self.imageView.image = UIImage(data: data)
                 })
             }
+            
+            if let imageFile = user["image"] as? AVFile {
+                
+                imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
+                    if error == nil {
+                        self.image = UIImage(data: data)
+                         self.imageView.image = self.image
+                    }
+                })
+            }
+            
+            if let name = user["name"] as? String {
+                userName = name
+                nameLabel.text = name
+            }
+           
+            
+            
         } else {
             loginOrLogOutButton.setTitle("登录", forState: .Normal)
         }
+        
+
+        
+        
         
     }
 
@@ -55,6 +80,14 @@ class UserViewController: UIViewController {
                 }
             }
         }
+        
+        if segue.identifier == Storyboard.segue_userToEdit {
+            if let destination = segue.destinationViewController as? EditViewController {
+                destination.name = userName
+                destination.image = image
+            }
+        }
+        
     }
     
     
@@ -62,7 +95,7 @@ class UserViewController: UIViewController {
 
         if AVUser.currentUser() != nil {
             AVUser.logOut()
-            SweetAlert().showAlert("成功退出!", subTitle: "You clicked the button!", style: AlertStyle.Success)
+            SweetAlert().showAlert("成功退出!", subTitle: "", style: AlertStyle.Success)
             loginOrLogOutButton.setTitle("登录", forState: .Normal)
             imageView.image = UIImage(named: defaultImage.userImage)
         } else {
@@ -71,6 +104,14 @@ class UserViewController: UIViewController {
         }
        
         
+    }
+    
+    
+    @IBAction func checkIn(sender: UIButton) {
+        if AVUser.currentUser() != nil {
+            sender.setTitle("已签到", forState: .Normal)
+
+        }
     }
     
     //点击编辑按钮触发该事件，判读是否存在当前用户，若存在则跳转

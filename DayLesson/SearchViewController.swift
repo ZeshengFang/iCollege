@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVOSCloud
 
 enum departurePlace {
     case MyCollection
@@ -52,9 +53,23 @@ class SearchViewController: UIViewController {
             case .RecentBrowse: titleLabel.text = "最近浏览"
             }
         }
-
-        
-
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if whichDeparturePlace != nil {
+            switch whichDeparturePlace! {
+            case .MyCollection:
+                if let collectionCourse = AVUser.currentUser()["collectionCourse"] as? [Int] {
+                    for var i = 0; i < introductions.count; i++ {
+                        if !collectionCourse.contains(introductions[i].ID) {
+                            introductions.removeAtIndex(i)
+                        }
+                    }
+                }
+                tableView.reloadData()
+            case .RecentBrowse: titleLabel.text = "最近浏览"
+            }
+        }
     }
     
     @IBAction func returnToHome(sender: AnyObject) {
@@ -64,6 +79,17 @@ class SearchViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        
+        if segue.identifier == Storyboard.segue_searchToDetail {
+            if let destination = segue.destinationViewController as? CourseDdtailViewController {
+                destination.introduction = sender as! Introduction
+            }
+        }
+        
+    }
 
 }
 
@@ -104,6 +130,12 @@ extension SearchViewController:UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell!
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let sender = searchController.active ? searchResults[indexPath.row] : introductions[indexPath.row]
+        print(sender)
+        self.performSegueWithIdentifier(Storyboard.segue_searchToDetail, sender: sender)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 }

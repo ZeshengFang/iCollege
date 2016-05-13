@@ -7,6 +7,7 @@ PODS:
   - MaterialKit (0.4)
   - NextGrowingTextView (0.6.2)
   - NVActivityIndicatorView (2.5)
+  - TKSubmitTransition (0.3)
 
 DEPENDENCIES:
   - AVOSCloudDynamic
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - MaterialKit (~> 0.4)
   - NextGrowingTextView
   - NVActivityIndicatorView
+  - TKSubmitTransition
 
 SPEC CHECKSUMS:
   AVOSCloudDynamic: 623fcd1541475841da553eb37cf9bab129f5bc5d
@@ -27,7 +29,8 @@ SPEC CHECKSUMS:
   MaterialKit: 2e5267bcf410b82793f2b92d2111f8ae4ed2c3f2
   NextGrowingTextView: 731ef3abf385a6d968bcddc92e836b2d7c73db42
   NVActivityIndicatorView: 18e82784c9cb2d5f3df3129a3e4754eb075ebca0
+  TKSubmitTransition: 6634e4fb07288db861b66d70fa4c4a7b96d0e6b2
 
-PODFILE CHECKSUM: 4735958d07d14e0d62f55e1bf9eab85553fac33a
+PODFILE CHECKSUM: b1dfa1f25b720e85d31751024feac6bc0e97ffbf
 
 COCOAPODS: 1.0.0.beta.3

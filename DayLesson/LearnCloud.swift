@@ -17,9 +17,28 @@ class LearnCloud {
         query.findObjectsInBackgroundWithBlock(block)
     }
     
-    func gerCourseDetailWithID(ID: String) -> CourseDetail {
+    func getCourseDetailWithID(ID: String) -> CourseDetail {
         let obeject = AVQuery.getObjectOfClass("CourseDetail", objectId: ID)
         let courseDetail = CourseDetail(object: obeject)
         return courseDetail
+    }
+    
+    func getCommentWithID(ID: String) -> Comment {
+        let obeject = AVQuery.getObjectOfClass("Comment", objectId: ID)
+        let comment = Comment(object: obeject)
+        return comment
+    }
+    func getIntroductionWithID(ID: String) -> [Introduction] {
+        let query = AVQuery(className: "Test")
+        var introductions = [Introduction]()
+        for object in query.findObjects() {
+            introductions.append(Introduction(sender: object))
+        }
+        return introductions
+    }
+    
+    func getUserWithID(ID: String) -> AVUser {
+        let user = AVQuery.getUserObjectWithId(ID)
+        return user
     }
 }

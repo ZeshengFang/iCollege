@@ -288,7 +288,8 @@ class HomePageViewController: UIViewController {
         
         if segue.identifier == Storyboard.segue_homeToCourseDetail {
             if let destination = segue.destinationViewController as? CourseDdtailViewController {
-                destination.introduction = sender as! Introduction
+                let introduction = sender as! Introduction
+                destination.introduction = introduction
             }
         }
         

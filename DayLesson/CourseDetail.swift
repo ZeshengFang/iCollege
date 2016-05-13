@@ -14,6 +14,8 @@ class CourseDetail {
     private var _courseDescription:String = "无课程详情"
     private var _date:String!
     private var _imageFile: AVFile!
+    private var _commentArray: [String]!
+    private var _courseUrl: String!
     
     var courseDescription: String {
         return _courseDescription
@@ -24,12 +26,21 @@ class CourseDetail {
     var imageFile: AVFile {
         return _imageFile
     }
+    var commentArray: [String] {
+        return _commentArray
+    }
+    var courseUrl: String {
+        return _courseUrl
+    }
+    
     
     private func configuration(object: AVObject) {
-        if let description = object["description"] as? String, let imageFile = object["image"] as? AVFile {
+        if let description = object["description"] as? String, let imageFile = object["image"] as? AVFile, let commentArray = object["commentArray"] as? [String], let courseUrl = object["courseUrl"] as? String {
             self._courseDescription = description
             self._date = "\(object.updatedAt)".stringByPaddingToLength(10, withString: "", startingAtIndex: 10)
             self._imageFile = imageFile
+            self._commentArray = commentArray
+            self._courseUrl = courseUrl
         }
 
     }

@@ -56,6 +56,16 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>SCLAlertView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>TKSubmitTransition.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -80,6 +90,16 @@
 			<true/>
 		</dict>
 		<key>358CDF6D26A663BBB7B6A3165A51DA64</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>498CDB8D187FF2CC5BDD28D8B24D8560</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>509A1CF37D17589042872F073B6088E6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -124,6 +144,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>95E19DE1A733F652F8C2564E2092A38B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A42D1F9A0F4D40FD3159420032EB60AF</key>
 		<dict>
 			<key>primary</key>
@@ -135,6 +160,11 @@
 			<true/>
 		</dict>
 		<key>ECB4143196184B0E0EA02182DB2B9CCA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE80912B02B175E861F8420DE621150C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

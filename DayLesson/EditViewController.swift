@@ -30,7 +30,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var name: String = "Mark Price"
     var imageName: String = "头像"
 
-    
+    var image: UIImage!
     
     var isImageSet = false
     
@@ -52,7 +52,12 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //            return
 //        }
         nameTextField.text = name
-        imageView.image = UIImage(named: imageName)
+        if image != nil {
+            imageView.image = image
+        } else {
+            imageView.image = UIImage(named: imageName)
+        }
+        
         isImageSet = true
         
         

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="swB-Id-fRX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="swB-Id-fRX">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -61,33 +61,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="18r-aJ-bvB" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="110" y="94" width="107" height="23"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
-                                        <color key="value" red="0.33725490200000002" green="0.71764705880000002" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
-                                        <real key="value" value="-2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
-                                        <real key="value" value="23"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amT-46-Eh6">
                                 <rect key="frame" x="398" y="150" width="22" height="16"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
@@ -126,6 +99,36 @@
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="18r-aJ-bvB" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="110" y="94" width="107" height="23"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                        <color key="value" red="0.33725490200000002" green="0.71764705880000002" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                        <real key="value" value="-2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="23"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -311,6 +314,19 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUg-uR-q2s" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="285" y="285" width="30" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="XbH-jb-z4a"/>
+                                    <constraint firstAttribute="width" constant="30" id="cF6-vV-Xhp"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.92549019610000005" green="0.61176470589999998" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8FD-Ci-e9d">
                                 <rect key="frame" x="-10" y="80" width="610" height="471"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -350,10 +366,10 @@
                                                                     <color key="value" red="0.90980392160000001" green="0.91372549020000005" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
-                                                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
-                                                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
                                                                     <integer key="value" value="2"/>
@@ -442,19 +458,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUg-uR-q2s" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                                <rect key="frame" x="285" y="285" width="30" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="XbH-jb-z4a"/>
-                                    <constraint firstAttribute="width" constant="30" id="cF6-vV-Xhp"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" red="0.92549019610000005" green="0.61176470589999998" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.062745098040000002" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -713,6 +716,7 @@
                     <connections>
                         <outlet property="tableView" destination="Dl2-6q-luk" id="BAk-Ld-pPC"/>
                         <outlet property="titleLabel" destination="3L0-1D-NjT" id="nqX-XD-jB0"/>
+                        <segue destination="rxe-fr-Fd4" kind="show" identifier="SearchToDetail" id="yO5-Gb-44q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2s2-hC-fvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1006,7 +1010,7 @@
                                 </prototypes>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Cf9-ya-E1f">
-                                <rect key="frame" x="20" y="35" width="154" height="70"/>
+                                <rect key="frame" x="20" y="35" width="126" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="默认头像" translatesAutoresizingMaskIntoConstraints="NO" id="abG-Wl-meV" customClass="CornerRoundImageView" customModule="DayLesson" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -1021,8 +1025,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQP-bA-Kda">
-                                        <rect key="frame" x="75" y="27" width="79" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQP-bA-Kda">
+                                        <rect key="frame" x="75" y="27" width="51" height="17"/>
                                         <fontDescription key="fontDescription" name="Farah" family="Farah" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1059,6 +1063,9 @@
                                 <state key="normal" title="每日签到">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="checkIn:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="pNf-xS-okd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1098,6 +1105,7 @@
                     <connections>
                         <outlet property="imageView" destination="abG-Wl-meV" id="pbE-re-H78"/>
                         <outlet property="loginOrLogOutButton" destination="dVh-dk-1An" id="X8C-yN-Gv2"/>
+                        <outlet property="nameLabel" destination="yQP-bA-Kda" id="uKd-3z-gJa"/>
                         <outlet property="tableView" destination="HPj-qX-Ua7" id="2OA-os-ZSo"/>
                         <segue destination="jwg-sT-XYm" kind="showDetail" identifier="userToSearch" id="zi2-SZ-ITC"/>
                         <segue destination="swB-Id-fRX" kind="presentation" identifier="loginSegue" id="El8-e2-p3h"/>
@@ -1348,6 +1356,24 @@
             </objects>
             <point key="canvasLocation" x="-70" y="689"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="MYO-iD-4FH">
+            <objects>
+                <viewController id="9WT-Lx-qnz" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AKj-Sg-Isa"/>
+                        <viewControllerLayoutGuide type="bottom" id="IEW-eJ-HqB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T8y-dp-sec">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GMa-Xo-1tC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2699" y="277"/>
+        </scene>
         <!--登陆-->
         <scene sceneID="Xmp-1S-6AE">
             <objects>
@@ -1403,6 +1429,9 @@
                                         <state key="normal" title="注册">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signUp:" destination="swB-Id-fRX" eventType="touchUpInside" id="3nh-bL-0Tg"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -1433,7 +1462,7 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lF1-7R-Z2M" customClass="MKButton" customModule="MaterialKit">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lF1-7R-Z2M" customClass="TKTransitionSubmitButton" customModule="TKSubmitTransition">
                                         <rect key="frame" x="0.0" y="92" width="210" height="30"/>
                                         <color key="backgroundColor" red="0.92549019610000005" green="0.61176470589999998" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1498,15 +1527,17 @@
                     </view>
                     <connections>
                         <outlet property="acountTextField" destination="ID8-JL-Txz" id="EF4-8Z-lH1"/>
-                        <outlet property="loginButton" destination="lF1-7R-Z2M" id="yun-Mw-b7h"/>
+                        <outlet property="loginButton" destination="lF1-7R-Z2M" id="xZV-9h-LbD"/>
                         <outlet property="passwordTextField" destination="fN1-rk-nGk" id="fTa-iO-bRI"/>
+                        <outlet property="textLabel" destination="KcR-5a-kuJ" id="6tr-cE-Vbx"/>
+                        <outlet property="unLOginUserEntranceButton" destination="cdx-3f-r4l" id="wNa-nG-7Ma"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="loginToHome" modalTransitionStyle="flipHorizontal" id="YVf-Ot-hlj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pd5-vS-f12" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="TjT-ZO-hc1">
                     <connections>
-                        <action selector="dismissKeyboard:" destination="swB-Id-fRX" id="92o-FX-bVl"/>
+                        <action selector="dismissKeyboard" destination="swB-Id-fRX" id="rOO-m8-1bM"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -1515,7 +1546,7 @@
         <!--Course Ddtail View Controller-->
         <scene sceneID="o9z-3x-zD2">
             <objects>
-                <viewController id="rxe-fr-Fd4" customClass="CourseDdtailViewController" customModule="DayLesson" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CourseDetail" id="rxe-fr-Fd4" customClass="CourseDdtailViewController" customModule="DayLesson" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lem-td-BOf"/>
                         <viewControllerLayoutGuide type="bottom" id="t98-zi-uWx"/>
@@ -1632,17 +1663,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="25"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="eYI-9M-rZP">
-                                                    <rect key="frame" x="564" y="6" width="28" height="14"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="eYI-9M-rZP">
+                                                    <rect key="frame" x="564" y="6" width="360000000028" height="360000000001"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1v8-VQ-Jvi">
-                                                            <rect key="frame" x="0.0" y="0.0" width="22" height="14"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="评分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1v8-VQ-Jvi">
+                                                            <rect key="frame" x="0.0" y="0.0" width="22" height="360000000001"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txx-JM-qgv" customClass="CosmosView" customModule="Cosmos">
-                                                            <rect key="frame" x="25" y="0.0" width="0.0" height="14"/>
+                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="txx-JM-qgv" customClass="CosmosView" customModule="Cosmos">
+                                                            <rect key="frame" x="25" y="0.0" width="0.0" height="360000000001"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
@@ -1652,10 +1683,10 @@
                                                                     <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
-                                                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
-                                                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
                                                                     <real key="value" value="-2"/>
@@ -1666,10 +1697,11 @@
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="starSize">
                                                                     <real key="value" value="16"/>
                                                                 </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcv-fB-atb">
-                                                            <rect key="frame" x="28" y="0.0" width="0.0" height="14"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcv-fB-atb">
+                                                            <rect key="frame" x="28" y="0.0" width="360000000000" height="360000000001"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1740,11 +1772,8 @@
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
                                                                     <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
-                                                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
-                                                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
                                                                     <real key="value" value="-2"/>
@@ -1754,6 +1783,10 @@
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="starSize">
                                                                     <real key="value" value="16"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                                                    <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <variation key="default">
@@ -1873,6 +1906,42 @@
             </objects>
             <point key="canvasLocation" x="825" y="-1134"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="D6Z-XP-0Yd">
+            <objects>
+                <viewController id="kk6-TD-wXz" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jdL-EB-E0q"/>
+                        <viewControllerLayoutGuide type="bottom" id="gsM-fa-zu9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q4u-vn-pEE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJe-NV-cMZ">
+                                <rect key="frame" x="277" y="285" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bq4-dt-aaH">
+                                <rect key="frame" x="279" y="133" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QJe-NV-cMZ" firstAttribute="centerY" secondItem="q4u-vn-pEE" secondAttribute="centerY" id="6AJ-sa-0LE"/>
+                            <constraint firstItem="QJe-NV-cMZ" firstAttribute="centerX" secondItem="q4u-vn-pEE" secondAttribute="centerX" id="Oyy-fe-2dg"/>
+                            <constraint firstItem="bq4-dt-aaH" firstAttribute="centerX" secondItem="q4u-vn-pEE" secondAttribute="centerX" id="T6I-dJ-o7P"/>
+                            <constraint firstItem="QJe-NV-cMZ" firstAttribute="top" secondItem="bq4-dt-aaH" secondAttribute="bottom" constant="131" id="gHj-NY-B4z"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C6d-VM-wBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1421" y="-935"/>
+        </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -1921,6 +1990,7 @@
         <image name="默认头像" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="8ie-y6-oor"/>
         <segue reference="5Te-bQ-ULu"/>
         <segue reference="zi2-SZ-ITC"/>
     </inferredMetricsTieBreakers>

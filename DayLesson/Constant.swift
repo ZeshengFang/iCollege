@@ -24,9 +24,11 @@ struct Storyboard {
     static let segue_userToEdit = "userToEdit"
     static let segue_homeToCourseDetail = "homeToCourseDetail"
     static let segue_courseDetailToComment = "courseDetailToComment"
+    static let segue_searchToDetail = "SearchToDetail"
     
     static let viewControllerStoryBoardID_tabbar = "tabbarViewController"
     static let viewControllerStoryBoardID_comment = "CommentViewController"
+    static let viewControllerStoryBoardID_courseDetail = "CourseDetail"
     
 
     

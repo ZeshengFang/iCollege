@@ -9,20 +9,18 @@
 import UIKit
 import AVOSCloud
 import BubbleTransition
+import TKSubmitTransition
 
 class LoginOrRegisterViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
     @IBOutlet weak var acountTextField: LoginTextField!
     @IBOutlet weak var passwordTextField: LoginTextField!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginButton: TKTransitionSubmitButton!
+    @IBOutlet weak var unLOginUserEntranceButton: UIButton!
+    @IBOutlet weak var textLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let testUser = AVUser()
-//        let error = NSErrorPointer()
-//        testUser.username = "Test"
-//        testUser.password = "Test"
-//        testUser.signUp(error)
-       
         
     }
     let transition = BubbleTransition()
@@ -51,35 +49,74 @@ class LoginOrRegisterViewController: UIViewController, UIViewControllerTransitio
     
 
     
-    @IBAction func dismissKeyboard(sender: AnyObject) {
+    @IBAction func dismissKeyboard() {
         self.acountTextField.resignFirstResponder()
         self.passwordTextField.resignFirstResponder()
     }
-
+    
+    var state = true
+    @IBAction func signUp(sender: UIButton) {
+        unLOginUserEntranceButton.hidden = !unLOginUserEntranceButton.hidden
+        let title = sender.titleLabel?.text
+        sender.setTitle(loginButton.titleLabel?.text, forState: .Normal)
+        loginButton.setTitle(title, forState: .Normal)
+        state = !state
+        if state {
+            textLabel.text = "新用户"
+        } else {
+            textLabel.text = "已有账户"
+        }
+        
+    }
     
 
     
     
-    @IBAction func login(sender: UIButton) {
+    @IBAction func login(sender: TKTransitionSubmitButton) {
+        
+        dismissKeyboard()
         guard let acountText = acountTextField.text where acountText != "" else {
             return
         }
         guard let passwordText = passwordTextField.text where passwordText != "" else {
             return
         }
-        loginWhitAVUser(acountText, passwordText: passwordText)
+        sender.startLoadingAnimation()
+        
+        if state {
+            loginWhitAVUser(acountText, passwordText: passwordText, btn: sender)
+        } else {
+            signUp(acountText, passwordText: passwordText, btn: sender)
+        }
     }
     
-    private func loginWhitAVUser(acountText: String, passwordText: String) {
+    private func loginWhitAVUser(acountText: String, passwordText: String, btn: TKTransitionSubmitButton) {
         AVUser.logInWithUsernameInBackground(acountText, password: passwordText){ (user, error) -> Void in
             if let error = error {
                 print(error.debugDescription)
-                
+                btn.setOriginalState()
             } else {
                 print("sucess")
                 self.performSegueWithIdentifier(Storyboard.segue_loginToHome, sender: nil)
                 
             }
         }
+    }
+    
+    private func signUp(acountText: String, passwordText: String, btn: TKTransitionSubmitButton) {
+        let user = AVUser()
+        user.username = acountText
+        user.password = passwordText
+        user.signUpInBackgroundWithBlock { (state, error) -> Void in
+            if error == nil {
+                 SweetAlert().showAlert("成功注册!", subTitle: "", style: AlertStyle.Success)
+            } else {
+                SweetAlert().showAlert("注册失败!", subTitle: "", style: AlertStyle.Error)
+                print(error)
+            }
+            btn.setOriginalState()
+        }
+        
+
     }
 }

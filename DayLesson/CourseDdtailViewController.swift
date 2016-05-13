@@ -11,6 +11,7 @@ import NVActivityIndicatorView
 import LiquidFloatingActionButton
 import SafariServices
 import Cosmos
+import AVOSCloud
 
 
 
@@ -26,21 +27,41 @@ class CourseDdtailViewController: UIViewController, LiquidFloatingActionButtonDe
             tableView.dataSource = self
             tableView.estimatedRowHeight = 80.0
             tableView.rowHeight = UITableViewAutomaticDimension
+            tableView.tableFooterView = UIView(frame: CGRect.zero)
         }
     }
     
+    var comments: [Comment] = []
+    var commentIDArray: [String]!
+
     var introduction: Introduction!{
         didSet {
-            courseDetail = learnCloud.gerCourseDetailWithID(introduction.descriptionObjectID)
+            courseDetail = learnCloud.getCourseDetailWithID(introduction.descriptionObjectID)
+            commentIDArray = courseDetail.commentArray
+            
         }
     }
-    var courseDetail: CourseDetail! {
-        didSet {
-            courseDetail.imageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+    var courseDetail: CourseDetail!
+    
+    override func viewWillAppear(animated: Bool) {
+        courseDetail.imageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+            if error == nil {
                 self.authorImage.image = UIImage(data: data)
             }
         }
+        if commentIDArray != nil {
+            comments.removeAll()
+            for ID in commentIDArray {
+                let comment = learnCloud.getCommentWithID(ID)
+                comments.append(comment)
+            }
+            self.tableView.reloadData()
+        }
+        
+        url = courseDetail.courseUrl
     }
+    
+    
     //待修改
     var url: String = "http://www.ted.com/talks/adam_foss_a_prosecutor_s_vision_for_a_better_justice_system"
     
@@ -54,7 +75,21 @@ class CourseDdtailViewController: UIViewController, LiquidFloatingActionButtonDe
     func liquidFloatingActionButton(liquidFloatingActionButton: LiquidFloatingActionButton, didSelectItemAtIndex index: Int) {
         switch index {
         case 0:
-            break
+            if AVUser.currentUser() != nil {
+                
+                if var collectionCourse = AVUser.currentUser()["collectionCourse"] as? [Int] {
+                    if !collectionCourse.contains(introduction.ID) {
+                        collectionCourse.append(introduction.ID)
+                        cells[index].imageView.tintColor = UIColor(red: 86.0 / 255.0, green: 183.0 / 255.0, blue: 101.0 / 255.0, alpha: 1.0)
+                    } else {
+                        collectionCourse.removeAtIndex(collectionCourse.indexOf(introduction.ID)!)
+                        cells[index].imageView.tintColor = UIColor.whiteColor()
+                    }
+                    AVUser.currentUser()["collectionCourse"] = collectionCourse
+                    
+                }
+
+            }
         case 1:
             self.performSegueWithIdentifier(Storyboard.segue_courseDetailToComment, sender: nil)
         case 2:
@@ -62,12 +97,21 @@ class CourseDdtailViewController: UIViewController, LiquidFloatingActionButtonDe
             webVC.delegate = self
             self.presentViewController(webVC, animated: true, completion: nil)
         default: break
+            
         }
         
-        liquidFloatingActionButton.close()
+        //liquidFloatingActionButton.close()
     }
     func safariViewControllerDidFinish(controller: SFSafariViewController) {
-        //self.dismissViewControllerAnimated(true, completion: nil)
+        if AVUser.currentUser() != nil {
+            if var recentBrowse = AVUser.currentUser()["recentBrowse"] as? [Int] {
+                if !recentBrowse.contains(introduction.ID) {
+                    recentBrowse.append(introduction.ID)
+                    AVUser.currentUser()["recentBrowse"] = recentBrowse
+                }
+                
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -82,12 +126,22 @@ class CourseDdtailViewController: UIViewController, LiquidFloatingActionButtonDe
         let cellFactory: (String) -> LiquidFloatingCell = { (iconName) in
             return LiquidFloatingCell(icon: UIImage(named: iconName)!)
         }
-        cells.append(cellFactory("ic_cloud"))
+        cells.append(cellFactory("收藏"))
         cells.append(cellFactory("ic_system"))
         cells.append(cellFactory("ic_place"))
         
+        if AVUser.currentUser() != nil {
+            if let collectionCourse = AVUser.currentUser()["collectionCourse"] as? [Int] {
+                if collectionCourse.contains(introduction.ID) {
+                    cells.first?.imageView.tintColor = UIColor(red: 86.0 / 255.0, green: 183.0 / 255.0, blue: 101.0 / 255.0, alpha: 1.0)
+                }
+            }
+        }
+
+        
         let floatingFrame = CGRect(x: self.view.frame.width - 56 - 16, y: self.view.frame.height - 56 - 16, width: 40, height: 40)
         let bottomRightButton = createButton(floatingFrame, .Up)
+        bottomRightButton.color = UIColor(red: 236.0 / 255.0, green: 156 / 255.0, blue: 17.0 / 255.0, alpha: 1.0)
         self.view.addSubview(bottomRightButton)
         setUp()
     }
@@ -99,10 +153,6 @@ class CourseDdtailViewController: UIViewController, LiquidFloatingActionButtonDe
         
     }
     
-    
-    
-    
-    
     @IBAction func back() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -113,11 +163,10 @@ extension CourseDdtailViewController: UITableViewDataSource, UITableViewDelegate
     // MARK: - tableViewDataSourse
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return comments.count + 2
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       // let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.introductionCellIdentifier) as? IntroductionTableViewCell
         
         switch indexPath.row {
         case 0:
@@ -127,8 +176,6 @@ extension CourseDdtailViewController: UITableViewDataSource, UITableViewDelegate
             }
                 
             cell.textLabel?.text = courseDetail.courseDescription
-
-            
             cell.textLabel?.numberOfLines = 0
             return cell
         case 1:
@@ -142,15 +189,21 @@ extension CourseDdtailViewController: UITableViewDataSource, UITableViewDelegate
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.commentCell) as! CommentCell
+            cell.configuration(comments[indexPath.row - 2])
             return cell
         }
         
     }
     // MARK: - tableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    func reloadTableView(comments: [Comment]) {
+        let indexPath = NSIndexPath(forRow: comments.count + 2, inSection: 1)
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    }
     
     
 }

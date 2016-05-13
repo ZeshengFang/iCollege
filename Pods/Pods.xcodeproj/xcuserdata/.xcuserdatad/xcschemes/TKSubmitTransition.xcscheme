@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '509A1CF37D17589042872F073B6088E6'
-               BlueprintName = 'Pods-DayLesson'
+               BlueprintIdentifier = '498CDB8D187FF2CC5BDD28D8B24D8560'
+               BlueprintName = 'TKSubmitTransition'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods-DayLesson.framework'>
+               BuildableName = 'TKSubmitTransition.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
