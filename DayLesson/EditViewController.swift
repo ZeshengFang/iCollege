@@ -90,7 +90,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             user["sex"] = "female"
         }
         user["name"] = nameTextField.text
-        user["image"] = AVFile(data: UIImageJPEGRepresentation(imageView.image!, 0.5))
+        user["image"] = AVFile(data: UIImageJPEGRepresentation(imageView.image!, 0.3))
         user.saveInBackgroundWithBlock { (success, error) -> Void in
             print("ok")
             self.image = self.imageView.image
@@ -99,8 +99,6 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             self.activityView.stopAnimation()
             SweetAlert().showAlert("保存成功", subTitle: "", style: AlertStyle.Success)
         }
-        print(AVUser.currentUser())
-        
     }
 
     @IBAction func addImage(sender: AnyObject) {

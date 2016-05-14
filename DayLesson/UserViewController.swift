@@ -52,18 +52,18 @@ class UserViewController: UIViewController {
                 userName = name
                 nameLabel.text = name
             }
-           
-            
+            if let signIn = AVUser.currentUser()["signIn"] as? Bool {
+                if signIn {
+                    signInButton.setTitle("已签到", forState: .Normal)
+                }
+            }
+
+
             
         } else {
             loginOrLogOutButton.setTitle("登录", forState: .Normal)
         }
         
-        if let signIn = AVUser.currentUser()["signIn"] as? Bool {
-            if signIn {
-                signInButton.setTitle("已签到", forState: .Normal)
-            }
-        }
         
         
         
@@ -106,6 +106,9 @@ class UserViewController: UIViewController {
             SweetAlert().showAlert("成功退出!", subTitle: "", style: AlertStyle.Success)
             loginOrLogOutButton.setTitle("登录", forState: .Normal)
             imageView.image = UIImage(named: defaultImage.userImage)
+            nameLabel.text = "默认名"
+            signInButton.setTitle("每日签到", forState: .Normal)
+            
         } else {
             loginOrLogOutButton.setTitle("退出登录", forState: .Normal)
             self.performSegueWithIdentifier(Storyboard.segue_login, sender: nil)
