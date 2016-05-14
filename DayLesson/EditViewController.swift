@@ -8,6 +8,7 @@
 
 import UIKit
 import AVOSCloud
+import NVActivityIndicatorView
 
 class EditViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -26,10 +27,11 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var cancelButton: UIButton!
     
+    @IBOutlet weak var coverView: UIView!
+    @IBOutlet weak var activityView: NVActivityIndicatorView!
     
     var sexIsMale: Bool = true
     var name: String = "Mark Price"
-    var imageName: String = "头像"
 
     var image: UIImage!
     
@@ -54,10 +56,9 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         nameTextField.text = name
         if image != nil {
             imageView.image = image
-        } else {
-            imageView.image = UIImage(named: imageName)
+            isImageSet = true
         }
-        isImageSet = true
+        
         
         if let sex = user["sex"] as? String {
             if sex == "male" {
@@ -81,19 +82,23 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
 
     @IBAction func postUserInfo() {
-//        print(sexIsMale)
-//        print(user)
-//        if sexIsMale {
-//            //print("male")
-//            user["sex"] = "male"
-//        } else {
-//            //print("female")
-//            user["sex"] = "female"
-//        }
-//        print(user)
-        
+        coverView.hidden = false
+        activityView.startAnimation()
+        if sexIsMale {
+            user["sex"] = "male"
+        } else {
+            user["sex"] = "female"
+        }
         user["name"] = nameTextField.text
-        user.saveInBackground()
+        user["image"] = AVFile(data: UIImageJPEGRepresentation(imageView.image!, 0.5))
+        user.saveInBackgroundWithBlock { (success, error) -> Void in
+            print("ok")
+            self.image = self.imageView.image
+            self.name = self.user["name"] as! String
+            self.coverView.hidden = true
+            self.activityView.stopAnimation()
+            SweetAlert().showAlert("保存成功", subTitle: "", style: AlertStyle.Success)
+        }
         print(AVUser.currentUser())
         
     }

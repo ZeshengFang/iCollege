@@ -32,5 +32,6 @@ class CommentCell: UITableViewCell {
         }
         ratingView.rating = obeject.rating
         commentContentTextLabel.text = obeject.commentContent
+        dateLabel.text = obeject.date
     }
 }

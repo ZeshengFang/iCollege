@@ -51,11 +51,16 @@ class CourseDdtailViewController: UIViewController, LiquidFloatingActionButtonDe
         }
         if commentIDArray != nil {
             comments.removeAll()
-            for ID in commentIDArray {
-                let comment = learnCloud.getCommentWithID(ID)
-                comments.append(comment)
+            for comment in learnCloud.getAllComment() {
+                if comment.courseID == courseDetail.ID {
+                     comments.append(comment)
+                }
             }
             self.tableView.reloadData()
+//            let query1 = AVQuery(className: "CourseDetail")
+//            query1.getObjectWithId(courseDetail.ID)
+//            let query2 = AVQuery(className: "Test")
+//            query2.getObjectWithId(<#T##objectId: String!##String!#>)
         }
         
         url = courseDetail.courseUrl
@@ -108,6 +113,7 @@ class CourseDdtailViewController: UIViewController, LiquidFloatingActionButtonDe
                 if !recentBrowse.contains(introduction.ID) {
                     recentBrowse.append(introduction.ID)
                     AVUser.currentUser()["recentBrowse"] = recentBrowse
+                    AVUser.currentUser().saveInBackground()
                 }
                 
             }
@@ -127,8 +133,8 @@ class CourseDdtailViewController: UIViewController, LiquidFloatingActionButtonDe
             return LiquidFloatingCell(icon: UIImage(named: iconName)!)
         }
         cells.append(cellFactory("收藏"))
-        cells.append(cellFactory("ic_system"))
-        cells.append(cellFactory("ic_place"))
+        cells.append(cellFactory("评论"))
+        cells.append(cellFactory("观看"))
         
         if AVUser.currentUser() != nil {
             if let collectionCourse = AVUser.currentUser()["collectionCourse"] as? [Int] {
@@ -156,6 +162,14 @@ class CourseDdtailViewController: UIViewController, LiquidFloatingActionButtonDe
     @IBAction func back() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Storyboard.segue_courseDetailToComment {
+            let destination = segue.destinationViewController as? CommentViewController
+            destination?.courseID = courseDetail.ID
+        }
+    }
+    
 }
 
 

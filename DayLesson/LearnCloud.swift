@@ -37,8 +37,30 @@ class LearnCloud {
         return introductions
     }
     
+    func getArticles() -> [Article]{
+        let query = AVQuery(className: "article")
+        var articles = [Article]()
+        for object in query.findObjects() {
+            articles.append(Article(object: object as! AVObject))
+        }
+        return articles
+    }
     func getUserWithID(ID: String) -> AVUser {
         let user = AVQuery.getUserObjectWithId(ID)
         return user
     }
+    func getArticleWithID(ID: String) -> AVObject {
+        let query = AVQuery(className: "article")
+        return query.getObjectWithId(ID)
+        //return AVQuery.getObjectOfClass("article", objectId: ID)
+    }
+    func getAllComment() -> [Comment] {
+        let query = AVQuery(className: "Comment")
+        var comments: [Comment] = []
+        for object in query.findObjects() {
+            comments.append(Comment(object: object as! AVObject))
+        }
+        return comments
+    }
+
 }

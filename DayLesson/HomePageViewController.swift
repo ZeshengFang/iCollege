@@ -112,12 +112,6 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         
 
-//        let inss = AVObject(className: "Test")
-//        inss["name"] = "zz"
-//        inss["author"] = "xx"
-//        inss["collections"] = 11
-//        
-//        inss.saveInBackground()
         let block:AVArrayResultBlock = {[unowned self] (objects, error) -> Void in
             //let currentTime = ++self.callRefreshTimes
             //首先清空当前存储网络通信返回的数据的数组

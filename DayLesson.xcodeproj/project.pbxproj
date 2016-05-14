@@ -15,7 +15,6 @@
 		6E7D19FF1C74AFC0005B5466 /* HomePageLIstButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D19FE1C74AFC0005B5466 /* HomePageLIstButton.swift */; };
 		6E7D93B81C9D9D3500105B43 /* LoginBackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D93B71C9D9D3500105B43 /* LoginBackgroundImageView.swift */; };
 		6E7D93BA1C9DA49000105B43 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D93B91C9DA49000105B43 /* LoginTextField.swift */; };
-		6E8688761CE5033000E68AB9 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8688751CE5033000E68AB9 /* Comment.swift */; };
 		6E8DE5BE1CE2586800DF6839 /* CommentTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8DE5BD1CE2586800DF6839 /* CommentTitleCell.swift */; };
 		6E8DE5C01CE25FF400DF6839 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8DE5BF1CE25FF400DF6839 /* CommentCell.swift */; };
 		6E9320921CDF94F600DCC8D8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9320911CDF94F600DCC8D8 /* Constant.swift */; };
@@ -27,15 +26,17 @@
 		6EA96E931C73009000EDFD43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EA96E911C73009000EDFD43 /* LaunchScreen.storyboard */; };
 		6EAB93181CE4C50C008DBED1 /* CourseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB93171CE4C50C008DBED1 /* CourseDetail.swift */; };
 		6EADB2CD1C9F1145002A8224 /* LoginOrRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EADB2CC1C9F1145002A8224 /* LoginOrRegisterViewController.swift */; };
+		6EB0987D1CE7007700E615E7 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB0987C1CE7007700E615E7 /* Comment.swift */; };
+		6EB0987F1CE7097F00E615E7 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB0987E1CE7097F00E615E7 /* Student.swift */; };
 		6EB97D381CA06AD000785EF1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB97D371CA06AD000785EF1 /* TabBarViewController.swift */; };
 		6EBB85891CA1ACE6001A1412 /* CornerRoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB85881CA1ACE6001A1412 /* CornerRoundImageView.swift */; };
 		6EBB858B1CA1AF13001A1412 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB858A1CA1AF13001A1412 /* UserViewController.swift */; };
+		6EBE886E1CE64B9C00B7A75D /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBE886D1CE64B9C00B7A75D /* Article.swift */; };
 		6EDB9AF61C9D51EB008A2653 /* HomePageLIstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDB9AF51C9D51EB008A2653 /* HomePageLIstView.swift */; };
 		6EDBFDAB1CE20B1A008312CD /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBFDAA1CE20B1A008312CD /* SweetAlert.swift */; };
 		6EDFC01B1CE1DBDD0040EE53 /* LearnCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDFC01A1CE1DBDD0040EE53 /* LearnCloud.swift */; };
 		6EE3C0DB1C9BED0E0039AB77 /* videoJS.js in Resources */ = {isa = PBXBuildFile; fileRef = 6EE3C0DA1C9BED0E0039AB77 /* videoJS.js */; };
 		6EECE2CC1CDF30F300029EB5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EECE2CB1CDF30F300029EB5 /* SearchViewController.swift */; };
-		6EED00291C9ACC5800AFB0A7 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EED00281C9ACC5800AFB0A7 /* VideoViewController.swift */; };
 		6EF0D3751CE278740062F823 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0D3741CE278740062F823 /* CommentViewController.swift */; };
 		6EF0D3771CE27BC10062F823 /* BorderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0D3761CE27BC10062F823 /* BorderTextView.swift */; };
 		6EF988511CE0EBAF00156245 /* CourseDdtailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF988501CE0EBAF00156245 /* CourseDdtailViewController.swift */; };
@@ -51,7 +52,6 @@
 		6E7D19FE1C74AFC0005B5466 /* HomePageLIstButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageLIstButton.swift; sourceTree = "<group>"; };
 		6E7D93B71C9D9D3500105B43 /* LoginBackgroundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBackgroundImageView.swift; sourceTree = "<group>"; };
 		6E7D93B91C9DA49000105B43 /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
-		6E8688751CE5033000E68AB9 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		6E8DE5BD1CE2586800DF6839 /* CommentTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTitleCell.swift; sourceTree = "<group>"; };
 		6E8DE5BF1CE25FF400DF6839 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		6E9320911CDF94F600DCC8D8 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -65,15 +65,17 @@
 		6EA96E941C73009000EDFD43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EAB93171CE4C50C008DBED1 /* CourseDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetail.swift; sourceTree = "<group>"; };
 		6EADB2CC1C9F1145002A8224 /* LoginOrRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginOrRegisterViewController.swift; sourceTree = "<group>"; };
+		6EB0987C1CE7007700E615E7 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		6EB0987E1CE7097F00E615E7 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		6EB97D371CA06AD000785EF1 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		6EBB85881CA1ACE6001A1412 /* CornerRoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerRoundImageView.swift; sourceTree = "<group>"; };
 		6EBB858A1CA1AF13001A1412 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		6EBE886D1CE64B9C00B7A75D /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		6EDB9AF51C9D51EB008A2653 /* HomePageLIstView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageLIstView.swift; sourceTree = "<group>"; };
 		6EDBFDAA1CE20B1A008312CD /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 		6EDFC01A1CE1DBDD0040EE53 /* LearnCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnCloud.swift; sourceTree = "<group>"; };
 		6EE3C0DA1C9BED0E0039AB77 /* videoJS.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = videoJS.js; sourceTree = "<group>"; };
 		6EECE2CB1CDF30F300029EB5 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		6EED00281C9ACC5800AFB0A7 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		6EF0D3741CE278740062F823 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		6EF0D3761CE27BC10062F823 /* BorderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderTextView.swift; sourceTree = "<group>"; };
 		6EF988501CE0EBAF00156245 /* CourseDdtailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDdtailViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				6E9E91F91C73800C00670C54 /* HomePageViewController.swift */,
-				6EED00281C9ACC5800AFB0A7 /* VideoViewController.swift */,
 				6EADB2CC1C9F1145002A8224 /* LoginOrRegisterViewController.swift */,
 				6EB97D371CA06AD000785EF1 /* TabBarViewController.swift */,
 				6EBB858A1CA1AF13001A1412 /* UserViewController.swift */,
@@ -145,7 +146,9 @@
 				6E9320911CDF94F600DCC8D8 /* Constant.swift */,
 				6EDFC01A1CE1DBDD0040EE53 /* LearnCloud.swift */,
 				6EAB93171CE4C50C008DBED1 /* CourseDetail.swift */,
-				6E8688751CE5033000E68AB9 /* Comment.swift */,
+				6EBE886D1CE64B9C00B7A75D /* Article.swift */,
+				6EB0987C1CE7007700E615E7 /* Comment.swift */,
+				6EB0987E1CE7097F00E615E7 /* Student.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -324,10 +327,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EBE886E1CE64B9C00B7A75D /* Article.swift in Sources */,
 				6EAB93181CE4C50C008DBED1 /* CourseDetail.swift in Sources */,
 				6E7D93BA1C9DA49000105B43 /* LoginTextField.swift in Sources */,
+				6EB0987D1CE7007700E615E7 /* Comment.swift in Sources */,
 				6E9320921CDF94F600DCC8D8 /* Constant.swift in Sources */,
-				6E8688761CE5033000E68AB9 /* Comment.swift in Sources */,
 				6EF988511CE0EBAF00156245 /* CourseDdtailViewController.swift in Sources */,
 				6E7D93B81C9D9D3500105B43 /* LoginBackgroundImageView.swift in Sources */,
 				6E8DE5BE1CE2586800DF6839 /* CommentTitleCell.swift in Sources */,
@@ -343,13 +347,13 @@
 				6E292B531CDDCA21003C1E8D /* EditViewController.swift in Sources */,
 				6E5953B91C7443E1000B9514 /* Introduction.swift in Sources */,
 				6EDBFDAB1CE20B1A008312CD /* SweetAlert.swift in Sources */,
-				6EED00291C9ACC5800AFB0A7 /* VideoViewController.swift in Sources */,
 				6EA96E871C73009000EDFD43 /* AppDelegate.swift in Sources */,
 				6E292B551CDDCFFC003C1E8D /* NormalTextField.swift in Sources */,
 				6EADB2CD1C9F1145002A8224 /* LoginOrRegisterViewController.swift in Sources */,
 				6EDB9AF61C9D51EB008A2653 /* HomePageLIstView.swift in Sources */,
 				6E9320941CDFAB9E00DCC8D8 /* issueCell.swift in Sources */,
 				6E7D19FF1C74AFC0005B5466 /* HomePageLIstButton.swift in Sources */,
+				6EB0987F1CE7097F00E615E7 /* Student.swift in Sources */,
 				6E5953B61C743F95000B9514 /* IntroductionTableViewCell.swift in Sources */,
 				6E8DE5C01CE25FF400DF6839 /* CommentCell.swift in Sources */,
 			);

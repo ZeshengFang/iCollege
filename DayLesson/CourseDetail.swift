@@ -16,6 +16,7 @@ class CourseDetail {
     private var _imageFile: AVFile!
     private var _commentArray: [String]!
     private var _courseUrl: String!
+    private var _ID: String!
     
     var courseDescription: String {
         return _courseDescription
@@ -32,6 +33,10 @@ class CourseDetail {
     var courseUrl: String {
         return _courseUrl
     }
+    var ID: String {
+        return _ID
+    }
+    
     
     
     private func configuration(object: AVObject) {
@@ -41,6 +46,7 @@ class CourseDetail {
             self._imageFile = imageFile
             self._commentArray = commentArray
             self._courseUrl = courseUrl
+            self._ID = object.objectId
         }
 
     }

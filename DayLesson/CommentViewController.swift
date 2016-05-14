@@ -7,14 +7,17 @@
 //
 
 import UIKit
-
+import Cosmos
+import MaterialKit
+import AVOSCloud
 class CommentViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var tweetTextView: BorderTextView!
     @IBOutlet weak var bottomUIView: UIView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var characterCountLabel: UILabel!
-    
+    @IBOutlet weak var ratingView: CosmosView!
+    var courseID: String!
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
@@ -110,6 +113,30 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     
     @IBAction func back() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func postComment(sender: MKButton) {
+        guard ratingView.rating > 0  && tweetTextView.text != nil && tweetTextView.text != "" else {
+            let sweetAlert = SweetAlert()
+            sweetAlert.kMaxHeight = UIScreen.mainScreen().bounds.height / 2
+            sweetAlert.showAlert("评论失败", subTitle: "评分或评论不能为空", style: AlertStyle.Error)
+            return
+        }
+        
+        let comment = AVObject(className:"Comment")
+        comment["rating"] = ratingView.rating
+        comment["commentContent"] = tweetTextView.text
+        comment["userID"] = AVUser.currentUser().objectId
+        comment["courseID"] = courseID
+        comment.saveInBackgroundWithBlock { (result, error) -> Void in
+            if result {
+                let sweetAlert = SweetAlert()
+                sweetAlert.showAlert("评论成功", subTitle: "", style: AlertStyle.Success)
+            }
+        }
+        
+        
+        
     }
 
 }

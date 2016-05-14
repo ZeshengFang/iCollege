@@ -22,6 +22,7 @@ class UserViewController: UIViewController {
             tableView.scrollEnabled = false
         }
     }
+    @IBOutlet weak var signInButton: UIButton!
     var image: UIImage!
     var userName: String!
     override func viewDidLoad() {
@@ -30,7 +31,10 @@ class UserViewController: UIViewController {
             loginOrLogOutButton.setTitle("退出登录", forState: .Normal)
             if let imageFile = user["image"] as? AVFile {
                 imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
-                    self.imageView.image = UIImage(data: data)
+                    if error == nil{
+                        self.imageView.image = UIImage(data: data)
+                        
+                    }
                 })
             }
             
@@ -55,7 +59,11 @@ class UserViewController: UIViewController {
             loginOrLogOutButton.setTitle("登录", forState: .Normal)
         }
         
-
+        if let signIn = AVUser.currentUser()["signIn"] as? Bool {
+            if signIn {
+                signInButton.setTitle("已签到", forState: .Normal)
+            }
+        }
         
         
         
@@ -110,6 +118,8 @@ class UserViewController: UIViewController {
     @IBAction func checkIn(sender: UIButton) {
         if AVUser.currentUser() != nil {
             sender.setTitle("已签到", forState: .Normal)
+            AVUser.currentUser().setObject(1, forKey: "signIn")
+            AVUser.currentUser().save()
 
         }
     }
@@ -122,7 +132,16 @@ class UserViewController: UIViewController {
         }
     }
     
-    
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
+        if let sourse = segue.sourceViewController as? EditViewController {
+            image = sourse.image
+            userName = sourse.name
+            imageView.image = image
+            nameLabel.text = userName
+        }
+        
+        
+    }
     
 
 }

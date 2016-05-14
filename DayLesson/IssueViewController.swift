@@ -11,15 +11,20 @@ import DOFavoriteButton
 
 class IssueViewController: UIViewController {
 
-    @IBOutlet weak var postButton: DOFavoriteButton!
+
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
             tableView.delegate = self
+            tableView.estimatedRowHeight = 180.0
+            tableView.rowHeight = UITableViewAutomaticDimension
+            tableView.tableFooterView = UIView(frame: CGRect.zero)
         }
     }
     
-    
+    var articles = learnCloud.getArticles()
+    override func viewDidLoad() {
+    }
     
 }
 
@@ -30,11 +35,15 @@ class IssueViewController: UIViewController {
 extension IssueViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.issueCellIdentifier) as! issueCell
-        
+        cell.configuration(articles[indexPath.row])
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return articles.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }
